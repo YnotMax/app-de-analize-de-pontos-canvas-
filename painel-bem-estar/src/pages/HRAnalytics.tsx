@@ -104,6 +104,19 @@ const HRAnalytics: React.FC = () => {
                                 <span className="material-symbols-outlined !text-base mr-1">arrow_right_alt</span> Sugerir caminho de apoio
                             </button>
                         </div>
+
+                        <div className="bg-white dark:bg-slate-800 p-4 rounded-lg border border-purple-200 dark:border-purple-800/50 shadow-sm">
+                            <h4 className="font-semibold text-lg flex items-center mb-2">
+                                <span className="material-symbols-outlined text-purple-500 mr-2">corporate_fare</span>
+                                Tendência Organizacional
+                            </h4>
+                            <p className="text-slate-700 dark:text-slate-300 text-sm">
+                                A taxa geral de absenteísmo mostra um aumento de 15% no último trimestre em comparação com o ano anterior. Considere uma pesquisa de bem-estar em toda a empresa.
+                            </p>
+                            <button className="mt-3 text-sm font-medium text-purple-600 hover:text-purple-800 dark:text-purple-400 dark:hover:text-purple-200 flex items-center">
+                                <span className="material-symbols-outlined !text-base mr-1">arrow_right_alt</span> Planejar pesquisa
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
