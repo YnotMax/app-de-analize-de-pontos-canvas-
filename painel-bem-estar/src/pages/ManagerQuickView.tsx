@@ -64,7 +64,7 @@ const ManagerQuickView: React.FC = () => {
                 <div className="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 border border-slate-200 dark:border-slate-800">
                     <h2 className="text-xl font-semibold mb-4">Previsões de Ausência (Próximos 7 dias)</h2>
                     <div className="flex items-end justify-between gap-2 h-32 mb-4">
-                        {['Qui', 'Sex', 'Sáb', 'Dom', 'Seg', 'Ter', 'Qua'].map((day, i) => {
+                        {['Qui', 'Sex', 'Sáb', 'Dom', 'Seg', 'Ter', 'Qua'].map((day, _) => {
                             const isWeekend = day === 'Sáb' || day === 'Dom';
                             const risk = isWeekend ? 0 : Math.random() * 30;
                             const isHighRisk = risk > 20;

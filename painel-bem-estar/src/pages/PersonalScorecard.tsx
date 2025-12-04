@@ -1,18 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const PersonalScorecard: React.FC = () => {
-    const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
-
-    const events = [
-        { date: '03/Mai', type: 'start', icon: 'schedule', time: '09:15', label: 'Início do Expediente' },
-        { date: '10/Mai', type: 'lunch', icon: 'lunch_dining', time: '14:30', label: 'Volta do Almoço' },
-        { date: '18/Mai', type: 'end', icon: 'exit_to_app', time: '16:00', label: 'Saída Antecipada' },
-        { date: '05/Jun', type: 'lunch', icon: 'lunch_dining', time: '14:15', label: 'Volta do Almoço' },
-        { date: '12/Jun', type: 'start', icon: 'schedule', time: '09:30', label: 'Início do Expediente' },
-        { date: '20/Jun', type: 'lunch', icon: 'lunch_dining', time: '14:45', label: 'Volta do Almoço' },
-        { date: '01/Jul', type: 'end', icon: 'exit_to_app', time: '16:30', label: 'Saída Antecipada' },
-        { date: '08/Jul', type: 'lunch', icon: 'lunch_dining', time: '14:05', label: 'Volta do Almoço' },
-    ];
 
     return (
         <div className="max-w-7xl mx-auto animate-fade-in font-display text-slate-800 dark:text-white">
