@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Frequência da Equipe: Dashboard Analítico</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/css">
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "background-light": "#f8fafc",
+              "background-dark": "#0f172a",
+            },
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200">
+<div class="flex h-screen">
+<aside class="w-20 bg-white dark:bg-slate-900 flex flex-col items-center justify-between p-4 shadow-lg">
+<div class="flex flex-col items-center space-y-6">
+<div class="w-10 h-10 bg-primary rounded-lg"></div>
+<nav class="flex flex-col items-center space-y-4">
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+</a>
+<a class="p-2 bg-blue-100 dark:bg-slate-800 text-primary rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+</nav>
+</div>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</aside>
+<main class="flex-1 flex overflow-hidden">
+<div class="flex-1 p-8 overflow-auto">
+<div class="max-w-7xl mx-auto">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-8">Frequência da Equipe: Dashboard Analítico</h1>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 mb-8">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white">Tendências de Frequência</h2>
+<div class="flex space-x-2">
+<button class="px-4 py-2 text-sm font-medium rounded-lg bg-primary text-white">Diário</button>
+<button class="px-4 py-2 text-sm font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">Semanal</button>
+<button class="px-4 py-2 text-sm font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">Mensal</button>
+</div>
+</div>
+<div class="h-80 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-600 text-lg">
+                            Gráfico de Barras Interativo (Ex: Chart.js ou D3.js)
+                        </div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Comparações de Equipe/Colaborador</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2" for="select-comparison-1">Comparar Equipe/Colaborador 1</label>
+<select class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary" id="select-comparison-1">
+<option>Selecione</option>
+<option>Equipe de TI</option>
+<option>Colaborador: Divino Sermingo</option>
+<option>Colaborador: Adiana Bulias</option>
+</select>
+<div class="h-40 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-600 text-sm mt-4">
+                                Gráfico de Comparação 1
+                            </div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2" for="select-comparison-2">Comparar Equipe/Colaborador 2</label>
+<select class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary" id="select-comparison-2">
+<option>Selecione</option>
+<option>Equipe de RH</option>
+<option>Colaborador: Adana Marco</option>
+<option>Colaborador: Royenio Cormaeno</option>
+</select>
+<div class="h-40 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-600 text-sm mt-4">
+                                Gráfico de Comparação 2
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<aside class="w-72 bg-white dark:bg-slate-900 shadow-md p-6 border-l border-slate-200 dark:border-slate-800 flex flex-col space-y-6 overflow-auto">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Filtros Avançados</h2>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2" for="filter-department">Departamento</label>
+<select class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary" id="filter-department">
+<option>Todos os Departamentos</option>
+<option>TI</option>
+<option>RH</option>
+<option>Marketing</option>
+<option>Vendas</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2" for="filter-absence-type">Tipo de Ausência</label>
+<select class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary" id="filter-absence-type">
+<option>Todos os Tipos</option>
+<option>Doença</option>
+<option>Férias</option>
+<option>Licença Médica</option>
+<option>Outros</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Período Personalizado</label>
+<div class="flex gap-2">
+<input class="w-1/2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary" type="date"/>
+<input class="w-1/2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary" type="date"/>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200">Aplicar Filtros</button>
+<button class="w-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 py-2 px-4 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200">Limpar Filtros</button>
+</div>
+</aside>
+</main>
+</div>
+
+</body></html>

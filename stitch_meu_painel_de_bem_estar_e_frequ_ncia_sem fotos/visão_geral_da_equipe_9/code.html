@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Histórico Detalhado de Frequência do Colaborador</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/css">
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }.sidebar-scroll {
+          scrollbar-width: thin;
+          scrollbar-color: #cbd5e1 #f1f5f9;}
+        .sidebar-scroll::-webkit-scrollbar {
+          width: 8px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-track {
+          background: #f1f5f9;border-radius: 4px;
+        }
+        .dark .sidebar-scroll::-webkit-scrollbar-track {
+          background: #1e293b;}
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+          background-color: #cbd5e1;border-radius: 4px;
+        }
+        .dark .sidebar-scroll::-webkit-scrollbar-thumb {
+          background-color: #475569;}
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "background-light": "#f8fafc",
+              "background-dark": "#0f172a",
+              "status-present": "#22c55e",
+              "status-absent": "#ef4444",
+              "status-vacation": "#facc15",
+              "status-critical": "#dc2626","status-holiday": "#a8a29e","status-weekend": "#cbd5e1",},
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 flex h-screen">
+<aside class="w-20 bg-white dark:bg-slate-900 flex flex-col items-center justify-between p-4 shadow-lg">
+<div class="flex flex-col items-center space-y-6">
+<div class="w-10 h-10 bg-primary rounded-lg"></div>
+<nav class="flex flex-col items-center space-y-4">
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+</a>
+<a class="p-2 bg-blue-100 dark:bg-slate-800 text-primary rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+</nav>
+</div>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</aside>
+<aside class="w-80 bg-white dark:bg-slate-900 flex flex-col p-4 shadow-xl border-r border-slate-200 dark:border-slate-800">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-6">Colaboradores</h2>
+<div class="relative mb-4">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary placeholder-slate-400 dark:placeholder-slate-500 text-sm" placeholder="Buscar colaborador..." type="text"/>
+</div>
+<div class="flex flex-col gap-1 overflow-y-auto sidebar-scroll flex-grow">
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 group" href="#">
+<img alt="Avatar de Divino Sermingo" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSBSV6F5aObkZ0e89HsEZgnM7YaYPbKyuVma-kepeGmanMCQbfPzs1Q-VJ9QkFYFWn4bM6M2fgqoJzGay6OfFs5h9wW5NYO1GGbqItNDO9M1uMi6gIl0xtbH01G8pObDS33TswcFlPP7or4Mb-kc_dCKo0mjxxIWAwZLoYtXMpCzGMMbtTAZP4gx5rNT4JwrdDSIwsmd_ioOI4V6viz6QB70I01aMS8x2yo-AHwBdDAwlvULMQpU1EQj8lzI4SV3hMko-8oPUkntU"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white group-hover:text-primary">Divino Sermingo</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Desenvolvedor Sênior</div>
+</div>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg bg-blue-50 dark:bg-slate-800 hover:bg-blue-100 dark:hover:bg-slate-700 transition-colors duration-200 group" href="#">
+<img alt="Avatar de Adiana Bulias" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfuLrwCEABzD2srEo_U_CjshrJ9_2loRO4btrWaEiGJbMLVFD1BwEMPK4Kho_mW2zlWBLJsWZ3iWcyD3s-7JcLuVnPKWbPhXzkRTR0MbPP0ttx9QDwat5NEfCd4woDQcXNr5f-A1VqxB9lGTmYxkEs6OyZShEGeEdoFvzdgseImdPkzHPd4Yq5rcgvjgOAgtquYuFlyNCWz91mQLCUhBXkcTt6V1MBx53bMVRWAi_Fz06kGX_ZxMicdLWBqJ6UH7qmdIKoeIvXD58"/>
+<div>
+<div class="font-medium text-primary dark:text-primary">Adiana Bulias</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Analista de RH</div>
+</div>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 group" href="#">
+<img alt="Avatar de Adana Marco" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaPet_OGJsKv4PgLl9byoCuZkh4dgluaEk61D4i9_fQ287eTe2pEVkcxiQta7Nq4oo6nEuWly56w-6VKQbg4dbzw8EeckofPaQPRUOpFRNN5ro8V9CWe7LBRq1Ky1uLTLYCU9VSOJYaceOx67MKO_aSj38xOLiCCk4xFvtp4h0TvTytb9goOlb2G2mUqmRfQ_Raa5AOl1H8FsCOEKtw0-PA_nYT8ThgAajZLTOagihwPSlzzl1Wz73zcN6lyHq0i1S5WBr-Qk3XpQ"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white group-hover:text-primary">Adana Marco</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Gerente de Projeto</div>
+</div>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 group" href="#">
+<img alt="Avatar de Royenio Cormaeno" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjx74A1jUURWLec39zCQOEviRERbNhFah6ashA1pz6rqfUmgLR_4FMGE1DtYhfpGA4EOMrWFsmoFwj02FLMrZSPs93IpCfIg7aVUByKT3iu7Beh7LzlNLu3u241-LUa0krvtJKXN8xiQGiwKutIN2tQuU-wwZeC05ZlvFZ3yayCcSvd5XYHFA_nsyVWTiPWUZOpzTVfA28GE7A2Qm84liyduwxtv5x_TfZ3qYkBW5vOMj_fh4TaX5mqtSe9Q4WrDTSOtdDD_tU8xw"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white group-hover:text-primary">Royenio Cormaeno</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Designer UI/UX</div>
+</div>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 group" href="#">
+<img alt="Avatar de Jersen Sefranger" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdaa6ueRKJRRov7oMZFN7R_wUtOynpMQFNCr-IBcWCVnM42GXRk4AhAstvvlOOPGuzz6NYZZ_e1DIsb4ezfVsCAEI4bdYhJUwtlJDgqWYF6pw380_R2Yr2yTCrgwdNn6_NX3dZU65SwKzzbgaJwvYZyAzw0VHYbOdSZ2DnO3F4UG7-CGg-hm_n0ACuCRxKH5B8BNMsxwzCaSw9mVRo4MelJ7ErLj_OvGotPymibzYnx-cT69x_Y_wCOXJN4BzKERCu3l-gz_JWN18"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white group-hover:text-primary">Jersen Sefranger</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Engenheiro de Dados</div>
+</div>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 group" href="#">
+<img alt="Avatar de Adana Rilhan" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYp1CoDBk__9iudZ46MKEzeqsVtfbRiQMGOAz1yswBuWjuZoL0kQhR5d6E-P7cCzhCYksB9Zep99resbqjbwduPr-XUEH6tXhh_5h5RNrrWBDBBZCnDpjjQ0x7RC7BI02KxYl-XOuWxg5DPnGQ8_yrMbANr2A_smsieABVuOiribp_xp9aEJvPfWvaHT5rImI2Id835zrH_GX3jHj0Rs1XKe9mN6HExgtEJ3qr3mUjgZGvM_fZoJBhCdSZ-jq090_IcDZO5UWiiQ4"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white group-hover:text-primary">Adana Rilhan</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Especialista em QA</div>
+</div>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 group" href="#">
+<img alt="Avatar de Mariana Silva" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlN9Awmw4h4qriI5-WWBUP1DBUVHWWGJ18I5DSsEh1FRxyjiXvV87AI7SDZh5gIUlqsmyJQ2i3TuaNQE3M5NdAOSRiGp4ju5azKESi77vWihWmxTrei5aWv-YwqDu_yWjS3nR-Bn2zTpu9LjRYFtIBUtMH-J6s0Yf5xzsZBcpD3W8o467rEFLqmkmbmcbYtJzVX51AXgQBBXPN9AqDbHEjWWc5y0cUxOWN8Px0sJ_tuz7KB5NKEgWIl2cb0MsNwc_eK4TJ5wgVI4U"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white group-hover:text-primary">Mariana Silva</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Analista Financeiro</div>
+</div>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 group" href="#">
+<img alt="Avatar de Pedro Henrique" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOh60PmMG0Vp1Vd6Epda9CPyQ0Kpk532x8L3ZIiAqvb9fmsOVHXGGrKCI2QhJKfvfZVQb63KTz_pmC67_NvTj1GqJYmT60ASRJKypyYuTonjJSwRu7G2ocQJtS8I98yOc6hy0XnEi-dqbNTQNxWuyK35iYl7nx_s8fsH57Sm4Su583m_ZW_KxONHJhv8hFrstt1IAk77kbHDQ6JxH8Gz4daxpbShB0zu8-4ucBorQdtp6_LaH1YaZs_qmX7QfaeK0OTB7lIz9S3S0"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white group-hover:text-primary">Pedro Henrique</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Engenheiro de Software</div>
+</div>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-200 group" href="#">
+<img alt="Avatar de Julia Costa" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCJ00F838X_aOapOEtL6NXteSSTlbhlRUXASVA7axVr87xQZRJOmm9IJkWxwjm4bE46284Z7aM7fYlcQf0Yer5vys3VQMoEzGN9EfM-POdRz4X3Rv_UFzdQ4v8sZiKxCMrdLIJQh0xsOUkolMTeIlDLxWeT00yALCKVGMO8_RLVInqmUOQuLZbHfkZO1c2QKLxv24Octs6NqM4am94XrLdtm70BxDZEfW498hSBcAdWn22S5XNKz1fPYCcbibBlKUdMDGqKXwNQRo"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white group-hover:text-primary">Julia Costa</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Especialista de Marketing</div>
+</div>
+</a>
+</div>
+</aside>
+<main class="flex-1 p-8 overflow-auto">
+<div class="max-w-7xl mx-auto">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Histórico de Frequência de Adiana Bulias</h1>
+<p class="text-slate-600 dark:text-slate-400 mb-8 text-base">
+            Visualize a evolução da frequência de Adiana Bulias ao longo do tempo. Identifique padrões de presença e ausência, destacando momentos críticos para apoiar decisões de gestão e acompanhamento.
+        </p>
+<div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<select class="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm py-2 px-3">
+<option>Último Ano</option>
+<option>Últimos 6 Meses</option>
+<option>Últimos 3 Meses</option>
+<option>Mês Atual</option>
+</select>
+<select class="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm py-2 px-3">
+<option>Exibição Diária</option>
+<option>Exibição Semanal</option>
+<option>Exibição Mensal</option>
+</select>
+</div>
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition-colors duration-200">
+<span class="material-symbols-outlined text-base">download</span>
+                    Exportar Dados
+                </button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 mb-8 min-h-[400px]">
+<h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Evolução da Frequência</h3>
+<div class="flex items-center gap-4 mb-4 text-sm text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 rounded-full bg-status-present"></span> Presente
+                </div>
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 rounded-full bg-status-absent"></span> Ausente
+                </div>
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 rounded-full bg-status-vacation"></span> Férias
+                </div>
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 rounded-full bg-status-critical"></span> Ausência Crítica
+                </div>
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 rounded-full bg-status-weekend"></span> Fim de Semana / Feriado
+                </div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800 h-96 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 text-center">
+<p>Gráfico de Barras Empilhadas Interativo (ex: Chart.js, D3.js) - Evolução diária/semanal da frequência (Presente, Ausente, Férias) ao longo do último ano.</p>
+<p class="absolute bottom-4 text-xs text-slate-400 dark:text-slate-500">Clique nas barras para mais detalhes sobre datas específicas.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6">
+<h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Detalhes das Ausências Críticas</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800">
+<tr>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Data</th>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Tipo de Ausência</th>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Duração</th>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Status da Justificativa</th>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Notas</th>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Ações</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr>
+<td class="p-4 whitespace-nowrap">2023-11-15</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-status-critical/20 text-status-critical dark:bg-status-critical/30">Médica</span>
+</td>
+<td class="p-4 whitespace-nowrap">3 Dias</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300">Pendente</span>
+</td>
+<td class="p-4 text-sm text-slate-600 dark:text-slate-400">Licença médica (anexo pendente)</td>
+<td class="p-4 whitespace-nowrap">
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400 ml-2">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="p-4 whitespace-nowrap">2023-10-20</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-status-absent/20 text-status-absent dark:bg-status-absent/30">Não Justificada</span>
+</td>
+<td class="p-4 whitespace-nowrap">1 Dia</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300">Rejeitada</span>
+</td>
+<td class="p-4 text-sm text-slate-600 dark:text-slate-400">Motivo pessoal, sem documento de apoio</td>
+<td class="p-4 whitespace-nowrap">
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400 ml-2">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="p-4 whitespace-nowrap">2023-09-01 - 2023-09-10</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-status-vacation/20 text-status-vacation dark:bg-status-vacation/30">Férias</span>
+</td>
+<td class="p-4 whitespace-nowrap">10 Dias</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">Aprovada</span>
+</td>
+<td class="p-4 text-sm text-slate-600 dark:text-slate-400">Férias anuais programadas</td>
+<td class="p-4 whitespace-nowrap">
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400 ml-2">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

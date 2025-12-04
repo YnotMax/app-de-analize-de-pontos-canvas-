@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Visão de Gestor Rápida</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/css">
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "background-light": "#f8fafc",
+              "background-dark": "#0f172a",
+              "presente-light": "#dcfce7","presente-dark": "#16a34a","ausente-light": "#fee2e2","ausente-dark": "#ef4444","ferias-light": "#fefce8","ferias-dark": "#eab308",},
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200">
+<div class="flex h-screen">
+<aside class="w-20 bg-white dark:bg-slate-900 flex flex-col items-center justify-between p-4 shadow-lg">
+<div class="flex flex-col items-center space-y-6">
+<div class="w-10 h-10 bg-primary rounded-lg"></div>
+<nav class="flex flex-col items-center space-y-4">
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="p-2 bg-blue-100 dark:bg-slate-800 text-primary rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+</nav>
+</div>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</aside>
+<main class="flex-1 p-8 overflow-auto">
+<div class="max-w-7xl mx-auto">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-8">Visão de Gestor Rápida</h1>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 mb-8">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Frequência da Equipe (Último Mês)</h2>
+<div class="flex items-end justify-between gap-2 h-48">
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 1">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 10%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-1/10 w-full" style="height: 15%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-1/4 w-full" style="height: 65%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">1</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 2">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 5%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-1/20 w-full" style="height: 10%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-3/20 w-full" style="height: 75%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">2</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 3">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 15%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-3/20 w-full" style="height: 5%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-1/4 w-full" style="height: 75%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">3</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 4">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 5%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-1/20 w-full" style="height: 25%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-3/10 w-full" style="height: 60%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">4</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 5">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-0 w-full" style="height: 10%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-1/10 w-full" style="height: 90%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">5</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 6 (Sábado)">
+<div class="w-full flex-grow relative">
+<div class="bg-slate-200 dark:bg-slate-700 absolute bottom-0 w-full" style="height: 100%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">6</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 7 (Domingo)">
+<div class="w-full flex-grow relative">
+<div class="bg-slate-200 dark:bg-slate-700 absolute bottom-0 w-full" style="height: 100%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">7</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 8">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 5%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-1/20 w-full" style="height: 10%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-3/20 w-full" style="height: 75%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">8</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 9">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-0 w-full" style="height: 15%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-3/20 w-full" style="height: 80%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">9</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 10">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 10%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-1/10 w-full" style="height: 30%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-2/5 w-full" style="height: 50%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">10</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 11">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-0 w-full" style="height: 5%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-1/20 w-full" style="height: 90%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">11</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 12">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 10%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-1/10 w-full" style="height: 5%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-3/20 w-full" style="height: 80%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">12</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 13 (Sábado)">
+<div class="w-full flex-grow relative">
+<div class="bg-slate-200 dark:bg-slate-700 absolute bottom-0 w-full" style="height: 100%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">13</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 14 (Domingo)">
+<div class="w-full flex-grow relative">
+<div class="bg-slate-200 dark:bg-slate-700 absolute bottom-0 w-full" style="height: 100%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">14</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 15">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-0 w-full" style="height: 10%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-1/10 w-full" style="height: 85%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">15</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 16">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 5%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-1/20 w-full" style="height: 10%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-3/20 w-full" style="height: 75%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">16</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 17">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-0 w-full" style="height: 10%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-1/10 w-full" style="height: 90%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">17</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 18">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 15%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-3/20 w-full" style="height: 25%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-2/5 w-full" style="height: 50%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">18</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 19">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-0 w-full" style="height: 5%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-1/20 w-full" style="height: 90%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">19</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 20 (Sábado)">
+<div class="w-full flex-grow relative">
+<div class="bg-slate-200 dark:bg-slate-700 absolute bottom-0 w-full" style="height: 100%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">20</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 21 (Domingo)">
+<div class="w-full flex-grow relative">
+<div class="bg-slate-200 dark:bg-slate-700 absolute bottom-0 w-full" style="height: 100%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">21</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 22">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-0 w-full" style="height: 10%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-1/10 w-full" style="height: 85%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">22</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 23">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 5%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-1/20 w-full" style="height: 10%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-3/20 w-full" style="height: 75%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">23</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 24">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 10%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-1/10 w-full" style="height: 30%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-2/5 w-full" style="height: 50%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">24</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 25">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-0 w-full" style="height: 5%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-1/20 w-full" style="height: 90%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">25</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 26">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 10%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-1/10 w-full" style="height: 5%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-3/20 w-full" style="height: 80%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">26</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 27 (Sábado)">
+<div class="w-full flex-grow relative">
+<div class="bg-slate-200 dark:bg-slate-700 absolute bottom-0 w-full" style="height: 100%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">27</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 28 (Domingo)">
+<div class="w-full flex-grow relative">
+<div class="bg-slate-200 dark:bg-slate-700 absolute bottom-0 w-full" style="height: 100%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">28</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 29">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-0 w-full" style="height: 10%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-1/10 w-full" style="height: 85%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">29</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Dia 30">
+<div class="w-full flex-grow relative">
+<div class="bg-ferias-light dark:bg-ferias-dark absolute bottom-0 w-full" style="height: 5%;"></div>
+<div class="bg-ausente-light dark:bg-ausente-dark absolute bottom-1/20 w-full" style="height: 10%;"></div>
+<div class="bg-presente-light dark:bg-presente-dark absolute bottom-3/20 w-full" style="height: 75%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">30</span>
+</div>
+</div>
+<div class="flex justify-center gap-4 mt-6 text-sm">
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full bg-presente-light dark:bg-presente-dark mr-2"></span>
+<span>Presente</span>
+</div>
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full bg-ausente-light dark:bg-ausente-dark mr-2"></span>
+<span>Ausente</span>
+</div>
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full bg-ferias-light dark:bg-ferias-dark mr-2"></span>
+<span>Férias</span>
+</div>
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full bg-slate-200 dark:bg-slate-700 mr-2"></span>
+<span>Não Aplicável</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Previsões de Ausência (Próximos 7-14 dias)</h2>
+<div class="flex items-end justify-between gap-2 h-32 mb-4">
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Amanhã: 15% Ausência">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-red-700/50 absolute bottom-0 w-full" style="height: 15%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Qui</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Sexta: 20% Ausência">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-red-700/50 absolute bottom-0 w-full" style="height: 20%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Sex</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Sábado: Não Aplicável">
+<div class="w-full flex-grow relative">
+<div class="bg-slate-200 dark:bg-slate-700 absolute bottom-0 w-full" style="height: 100%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Sáb</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Domingo: Não Aplicável">
+<div class="w-full flex-grow relative">
+<div class="bg-slate-200 dark:bg-slate-700 absolute bottom-0 w-full" style="height: 100%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Dom</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Seg: 10% Ausência">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-red-700/50 absolute bottom-0 w-full" style="height: 10%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Seg</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Ter: 12% Ausência">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-red-700/50 absolute bottom-0 w-full" style="height: 12%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Ter</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Qua: 25% Ausência (ALERTA)">
+<div class="w-full flex-grow relative">
+<div class="bg-red-200 dark:bg-red-800 absolute bottom-0 w-full" style="height: 25%;"></div>
+</div>
+<span class="text-xs font-semibold text-red-500 dark:text-red-400 mt-1">Qua</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Qui: 18% Ausência">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-red-700/50 absolute bottom-0 w-full" style="height: 18%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Qui</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Sex: 15% Ausência">
+<div class="w-full flex-grow relative">
+<div class="bg-ausente-light dark:bg-red-700/50 absolute bottom-0 w-full" style="height: 15%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Sex</span>
+</div>
+<div class="flex-1 h-full flex flex-col justify-end items-center" title="Sábado: Não Aplicável">
+<div class="w-full flex-grow relative">
+<div class="bg-slate-200 dark:bg-slate-700 absolute bottom-0 w-full" style="height: 100%;"></div>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Sáb</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-sm text-slate-600 dark:text-slate-400 mt-2">
+<span>Próximo pico: Quarta-feira (25% previsão de ausência)</span>
+<a class="text-primary hover:underline" href="#">Detalhes <span class="material-symbols-outlined text-sm align-bottom">arrow_forward</span></a>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 flex flex-col justify-between">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Alertas de Justificativas Pendentes</h2>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-amber-500 text-2xl">warning</span>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">3 justificativas de Divino Sermingo</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Desde 15/03/2024</div>
+</div>
+</div>
+<button class="bg-primary text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Verificar</button>
+</div>
+<div class="flex items-center justify-between p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-amber-500 text-2xl">warning</span>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">2 justificativas de Adiana Bulias</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Desde 20/03/2024</div>
+</div>
+</div>
+<button class="bg-primary text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Verificar</button>
+</div>
+<div class="flex items-center justify-between p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-amber-500 text-2xl">warning</span>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">1 justificativa de Adana Rilhan</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Desde 25/03/2024</div>
+</div>
+</div>
+<button class="bg-primary text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Verificar</button>
+</div>
+</div>
+<a class="block text-center text-primary hover:underline mt-6" href="#">Ver todas as justificativas pendentes <span class="material-symbols-outlined text-sm align-bottom">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

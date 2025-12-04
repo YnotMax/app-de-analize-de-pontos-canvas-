@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Comparação Dinâmica de Frequência</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .drag-handle {
+          cursor: grab;
+        }
+        .drag-handle:active {
+          cursor: grabbing;
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "background-light": "#f8fafc",
+              "background-dark": "#0f172a",
+            },
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200">
+<div class="flex h-screen">
+<aside class="w-20 bg-white dark:bg-slate-900 flex flex-col items-center justify-between p-4 shadow-lg">
+<div class="flex flex-col items-center space-y-6">
+<div class="w-10 h-10 bg-primary rounded-lg"></div>
+<nav class="flex flex-col items-center space-y-4">
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+</a>
+<a class="p-2 bg-blue-100 dark:bg-slate-800 text-primary rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">compare_arrows</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+</nav>
+</div>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</aside>
+<main class="flex-1 flex flex-col p-8 overflow-hidden">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-8">Interface de Comparação Dinâmica de Frequência</h1>
+<div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+<div class="relative w-full sm:w-auto flex-grow max-w-sm">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary placeholder-slate-400 dark:placeholder-slate-500" placeholder="Buscar colaborador ou grupo..." type="text"/>
+</div>
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<select class="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary">
+<option>Período</option>
+<option>Últimos 7 dias</option>
+<option>Últimos 30 dias</option>
+<option>Mês atual</option>
+</select>
+<select class="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary">
+<option>Tipo</option>
+<option>Colaborador</option>
+<option>Grupo/Departamento</option>
+</select>
+</div>
+</div>
+<div class="flex flex-1 gap-8 overflow-hidden">
+<div class="w-1/2 flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 overflow-y-auto">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Colaboradores &amp; Grupos</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 gap-4 pb-4">
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-3 drag-handle" data-id="divino" data-type="individual" draggable="true">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Divino Sermingo" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSBSV6F5aObkZ0e89HsEZgnM7YaYPbKyuVma-kepeGmanMCQbfPzs1Q-VJ9QkFYFWn4bM6M2fgqoJzGay6OfFs5h9wW5NYO1GGbqItNDO9M1uMi6gIl0xtbH01G8pObDS33TswcFlPP7or4Mb-kc_dCKo0mjxxIWAwZLoYtXMpCzGMMbtTAZP4gx5rNT4JwrdDSIwsmd_ioOI4V6viz6QB70I01aMS8x2yo-AHwBdDAwlvULMQpU1EQj8lzI4SV3hMko-8oPUkntU"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Divino Sermingo</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Marketing</div>
+</div>
+</div>
+<div class="h-16 w-full bg-slate-200 dark:bg-slate-700 rounded-md flex items-end overflow-hidden">
+<div class="w-1/5 h-2/3 bg-primary/80" style="height: 60%;" title="Semana 1: 60% Frequência"></div>
+<div class="w-1/5 h-3/4 bg-primary/80" style="height: 75%;" title="Semana 2: 75% Frequência"></div>
+<div class="w-1/5 h-1/2 bg-red-500/80" style="height: 50%;" title="Semana 3: 50% Frequência (Crítico)"></div>
+<div class="w-1/5 h-4/5 bg-primary/80" style="height: 80%;" title="Semana 4: 80% Frequência"></div>
+<div class="w-1/5 h-2/3 bg-primary/80" style="height: 65%;" title="Semana 5: 65% Frequência"></div>
+</div>
+<div class="flex justify-between items-center text-sm text-slate-600 dark:text-slate-400">
+<span>Absenteísmo: <span class="text-red-500 font-semibold">4.5%</span></span>
+<span>Faltas (Mês): <span class="font-semibold">3</span></span>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-3 drag-handle" data-id="adiana" data-type="individual" draggable="true">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Adiana Bulias" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfuLrwCEABzD2srEo_U_CjshrJ9_2loRO4btrWaEiGJbMLVFD1BwEMPK4Kho_mW2zlWBLJsWZ3iWcyD3s-7JcLuVnPKWbPhXzkRTR0MbPP0ttx9QDwat5NEfCd4woDQcXNr5f-A1VqxB9lGTmYxkEs6OyZShEGeEdoFvzdgseImdPkzHPd4Yq5rcgvjgOAgtquYuFlyNCWz91mQLCUhBXkcTt6V1MBx53bMVRWAi_Fz06kGX_ZxMicdLWBqJ6UH7qmdIKoeIvXD58"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Adiana Bulias</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Desenvolvimento</div>
+</div>
+</div>
+<div class="h-16 w-full bg-slate-200 dark:bg-slate-700 rounded-md flex items-end overflow-hidden">
+<div class="w-1/5 h-4/5 bg-primary/80" style="height: 80%;" title="Semana 1: 80% Frequência"></div>
+<div class="w-1/5 h-2/3 bg-primary/80" style="height: 65%;" title="Semana 2: 65% Frequência"></div>
+<div class="w-1/5 h-3/4 bg-primary/80" style="height: 75%;" title="Semana 3: 75% Frequência"></div>
+<div class="w-1/5 h-1/2 bg-red-500/80" style="height: 50%;" title="Semana 4: 50% Frequência (Crítico)"></div>
+<div class="w-1/5 h-2/3 bg-primary/80" style="height: 60%;" title="Semana 5: 60% Frequência"></div>
+</div>
+<div class="flex justify-between items-center text-sm text-slate-600 dark:text-slate-400">
+<span>Absenteísmo: <span class="text-red-500 font-semibold">4.5%</span></span>
+<span>Faltas (Mês): <span class="font-semibold">2</span></span>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-3 drag-handle" data-id="marketing" data-type="group" draggable="true">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">groups</span>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Marketing</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Departamento (8 Pessoas)</div>
+</div>
+</div>
+<div class="h-16 w-full bg-slate-200 dark:bg-slate-700 rounded-md flex items-end overflow-hidden">
+<div class="w-1/5 h-4/5 bg-primary/80" style="height: 80%;" title="Semana 1: 80% Frequência"></div>
+<div class="w-1/5 h-2/3 bg-red-500/80" style="height: 65%;" title="Semana 2: 65% Frequência (Crítico)"></div>
+<div class="w-1/5 h-3/4 bg-primary/80" style="height: 75%;" title="Semana 3: 75% Frequência"></div>
+<div class="w-1/5 h-1/2 bg-red-500/80" style="height: 50%;" title="Semana 4: 50% Frequência (Crítico)"></div>
+<div class="w-1/5 h-4/5 bg-primary/80" style="height: 80%;" title="Semana 5: 80% Frequência"></div>
+</div>
+<div class="flex justify-between items-center text-sm text-slate-600 dark:text-slate-400">
+<span>Absenteísmo: <span class="text-red-500 font-semibold">6.2%</span></span>
+<span>Faltas (Mês): <span class="font-semibold">12</span></span>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-3 drag-handle" data-id="adana" data-type="individual" draggable="true">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Adana Marco" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaPet_OGJsKv4PgLl9byoCuZkh4dgluaEk61D4i9_fQ287eTe2pEVkcxiQta7Nq4oo6nEuWly56w-6VKQbg4dbzw8EeckofPaQPRUOpFRNN5ro8V9CWe7LBRq1Ky1uLTLYCU9VSOJYaceOx67MKO_aSj38xOLiCCk4xFvtp4h0TvTytb9goOlb2G2mUqmRfQ_Raa5AOl1H8FsCOEKtw0-PA_nYT8ThgAajZLTOagihwPSlzzl1Wz73zcN6lyHq0i1S5WBr-Qk3XpQ"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Adana Marco</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">RH</div>
+</div>
+</div>
+<div class="h-16 w-full bg-slate-200 dark:bg-slate-700 rounded-md flex items-end overflow-hidden">
+<div class="w-1/5 h-2/3 bg-primary/80" style="height: 60%;" title="Semana 1: 60% Frequência"></div>
+<div class="w-1/5 h-4/5 bg-primary/80" style="height: 80%;" title="Semana 2: 80% Frequência"></div>
+<div class="w-1/5 h-1/2 bg-red-500/80" style="height: 50%;" title="Semana 3: 50% Frequência (Crítico)"></div>
+<div class="w-1/5 h-3/4 bg-primary/80" style="height: 75%;" title="Semana 4: 75% Frequência"></div>
+<div class="w-1/5 h-2/3 bg-primary/80" style="height: 65%;" title="Semana 5: 65% Frequência"></div>
+</div>
+<div class="flex justify-between items-center text-sm text-slate-600 dark:text-slate-400">
+<span>Absenteísmo: <span class="text-red-500 font-semibold">4.3%</span></span>
+<span>Faltas (Mês): <span class="font-semibold">2</span></span>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-3 drag-handle" data-id="vendas" data-type="group" draggable="true">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">groups</span>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Vendas</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Departamento (15 Pessoas)</div>
+</div>
+</div>
+<div class="h-16 w-full bg-slate-200 dark:bg-slate-700 rounded-md flex items-end overflow-hidden">
+<div class="w-1/5 h-3/4 bg-primary/80" style="height: 75%;" title="Semana 1: 75% Frequência"></div>
+<div class="w-1/5 h-4/5 bg-primary/80" style="height: 80%;" title="Semana 2: 80% Frequência"></div>
+<div class="w-1/5 h-2/3 bg-primary/80" style="height: 65%;" title="Semana 3: 65% Frequência"></div>
+<div class="w-1/5 h-3/4 bg-primary/80" style="height: 70%;" title="Semana 4: 70% Frequência"></div>
+<div class="w-1/5 h-1/2 bg-red-500/80" style="height: 50%;" title="Semana 5: 50% Frequência (Crítico)"></div>
+</div>
+<div class="flex justify-between items-center text-sm text-slate-600 dark:text-slate-400">
+<span>Absenteísmo: <span class="text-primary font-semibold">3.8%</span></span>
+<span>Faltas (Mês): <span class="font-semibold">10</span></span>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-3 drag-handle" data-id="royenio" data-type="individual" draggable="true">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Royenio Cormaeno" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjx74A1jUURWLec39zCQOEviRERbNhFah6ashA1pz6rqfUmgLR_4FMGE1DtYhfpGA4EOMrWFsmoFwj02FLMrZSPs93IpCfIg7aVUByKT3iu7Beh7LzlNLu3u241-LUa0krvtJKXN8xiQGiwKutIN2tQuU-wwZeC05ZlvFZ3yayCcSvd5XYHFA_nsyVWTiPWUZOpzTVfA28GE7A2Qm84liyduwxtv5x_TfZ3qYkBW5vOMj_fh4TaX5mqtSe9Q4WrDTSOtdDD_tU8xw"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Royenio Cormaeno</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">TI</div>
+</div>
+</div>
+<div class="h-16 w-full bg-slate-200 dark:bg-slate-700 rounded-md flex items-end overflow-hidden">
+<div class="w-1/5 h-1/2 bg-red-500/80" style="height: 50%;" title="Semana 1: 50% Frequência (Crítico)"></div>
+<div class="w-1/5 h-2/3 bg-primary/80" style="height: 65%;" title="Semana 2: 65% Frequência"></div>
+<div class="w-1/5 h-4/5 bg-primary/80" style="height: 80%;" title="Semana 3: 80% Frequência"></div>
+<div class="w-1/5 h-1/2 bg-red-500/80" style="height: 50%;" title="Semana 4: 50% Frequência (Crítico)"></div>
+<div class="w-1/5 h-3/4 bg-primary/80" style="height: 75%;" title="Semana 5: 75% Frequência"></div>
+</div>
+<div class="flex justify-between items-center text-sm text-slate-600 dark:text-slate-400">
+<span>Absenteísmo: <span class="text-red-500 font-semibold">3.5%</span></span>
+<span>Faltas (Mês): <span class="font-semibold">4</span></span>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-3 drag-handle" data-id="jersen" data-type="individual" draggable="true">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Jersen Sefranger" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdaa6ueRKJRRov7oMZFN7R_wUtOynpMQFNCr-IBcWCVnM42GXRk4AhAstvvlOOPGuzz6NYZZ_e1DIsb4ezfVsCAEI4bdYhJUwtlJDgqWYF6pw380_R2Yr2yTCrgwdNn6_NX3dZU65SwKzzbgaJwvYZyAzw0VHYbOdSZ2DnO3F4UG7-CGg-hm_n0ACuCRxKH5B8BNMsxwzCaSw9mVRo4MelJ7ErLj_OvGotPymibzYnx-cT69x_Y_wCOXJN4BzKERCu3l-gz_JWN18"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Jersen Sefranger</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Desenvolvimento</div>
+</div>
+</div>
+<div class="h-16 w-full bg-slate-200 dark:bg-slate-700 rounded-md flex items-end overflow-hidden">
+<div class="w-1/5 h-4/5 bg-primary/80" style="height: 80%;" title="Semana 1: 80% Frequência"></div>
+<div class="w-1/5 h-2/3 bg-primary/80" style="height: 65%;" title="Semana 2: 65% Frequência"></div>
+<div class="w-1/5 h-4/5 bg-primary/80" style="height: 80%;" title="Semana 3: 80% Frequência"></div>
+<div class="w-1/5 h-3/4 bg-primary/80" style="height: 75%;" title="Semana 4: 75% Frequência"></div>
+<div class="w-1/5 h-2/3 bg-primary/80" style="height: 60%;" title="Semana 5: 60% Frequência"></div>
+</div>
+<div class="flex justify-between items-center text-sm text-slate-600 dark:text-slate-400">
+<span>Absenteísmo: <span class="text-green-500 font-semibold">2.5%</span></span>
+<span>Faltas (Mês): <span class="font-semibold">1</span></span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-1/2 flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 overflow-y-auto">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">Área de Comparação</h2>
+<div class="flex-1 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg p-4 flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 gap-4 min-h-[200px]" id="comparison-zone">
+<span class="material-symbols-outlined text-6xl text-slate-400 dark:text-slate-600">drag_handle</span>
+<p class="text-center">Arraste e solte colaboradores ou grupos aqui para comparar a frequência.</p>
+</div>
+<div class="hidden flex flex-col gap-6 mt-6" id="comparison-results">
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Divino Sermingo" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSBSV6F5aObkZ0e89HsEZgnM7YaYPbKyuVma-kepeGmanMCQbfPzs1Q-VJ9QkFYFWn4bM6M2fgqoJzGay6OfFs5h9wW5NYO1GGbqItNDO9M1uMi6gIl0xtbH01G8pObDS33TswcFlPP7or4Mb-kc_dCKo0mjxxIWAwZLoYtXMpCzGMMbtTAZP4gx5rNT4JwrdDSIwsmd_ioOI4V6viz6QB70I01aMS8x2yo-AHwBdDAwlvULMQpU1EQj8lzI4SV3hMko-8oPUkntU"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Divino Sermingo</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Marketing</div>
+</div>
+</div>
+<button class="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="relative h-32 w-full bg-slate-200 dark:bg-slate-700 rounded-md p-2">
+<div class="absolute inset-0 flex items-end justify-around p-2">
+<div class="flex flex-col items-center text-xs text-slate-600 dark:text-slate-400">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 60%;" title="Semana 1: 60% Frequência"></div>
+<span>S1</span>
+</div>
+<div class="flex flex-col items-center text-xs text-slate-600 dark:text-slate-400">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 75%;" title="Semana 2: 75% Frequência"></div>
+<span>S2</span>
+</div>
+<div class="flex flex-col items-center text-xs text-slate-600 dark:text-slate-400">
+<div class="w-4 bg-red-500 rounded-t-sm" style="height: 50%;" title="Semana 3: 50% Frequência (Crítico)"></div>
+<span>S3</span>
+</div>
+<div class="flex flex-col items-center text-xs text-slate-600 dark:text-slate-400">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 80%;" title="Semana 4: 80% Frequência"></div>
+<span>S4</span>
+</div>
+<div class="flex flex-col items-center text-xs text-slate-600 dark:text-slate-400">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 65%;" title="Semana 5: 65% Frequência"></div>
+<span>S5</span>
+</div>
+</div>
+</div>
+<div class="flex justify-around items-center text-sm text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-700 pt-2">
+<div class="flex flex-col items-center">
+<span>Absenteísmo:</span>
+<span class="text-red-500 font-semibold">4.5%</span>
+</div>
+<div class="flex flex-col items-center">
+<span>Total Faltas:</span>
+<span class="font-semibold">3</span>
+</div>
+<div class="flex flex-col items-center">
+<span>Produtividade:</span>
+<span class="text-orange-500 font-semibold"> -10%</span>
+</div>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">groups</span>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Vendas</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Departamento (15 Pessoas)</div>
+</div>
+</div>
+<button class="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="relative h-32 w-full bg-slate-200 dark:bg-slate-700 rounded-md p-2">
+<div class="absolute inset-0 flex items-end justify-around p-2">
+<div class="flex flex-col items-center text-xs text-slate-600 dark:text-slate-400">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 75%;" title="Semana 1: 75% Frequência"></div>
+<span>S1</span>
+</div>
+<div class="flex flex-col items-center text-xs text-slate-600 dark:text-slate-400">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 80%;" title="Semana 2: 80% Frequência"></div>
+<span>S2</span>
+</div>
+<div class="flex flex-col items-center text-xs text-slate-600 dark:text-slate-400">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 65%;" title="Semana 3: 65% Frequência"></div>
+<span>S3</span>
+</div>
+<div class="flex flex-col items-center text-xs text-slate-600 dark:text-slate-400">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 70%;" title="Semana 4: 70% Frequência"></div>
+<span>S4</span>
+</div>
+<div class="flex flex-col items-center text-xs text-slate-600 dark:text-slate-400">
+<div class="w-4 bg-red-500 rounded-t-sm" style="height: 50%;" title="Semana 5: 50% Frequência (Crítico)"></div>
+<span>S5</span>
+</div>
+</div>
+</div>
+<div class="flex justify-around items-center text-sm text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-700 pt-2">
+<div class="flex flex-col items-center">
+<span>Absenteísmo:</span>
+<span class="text-primary font-semibold">3.8%</span>
+</div>
+<div class="flex flex-col items-center">
+<span>Total Faltas:</span>
+<span class="font-semibold">10</span>
+</div>
+<div class="flex flex-col items-center">
+<span>Produtividade:</span>
+<span class="text-green-500 font-semibold"> +5%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const draggableItems = document.querySelectorAll('.drag-handle');
+        const comparisonZone = document.getElementById('comparison-zone');
+        const comparisonResults = document.getElementById('comparison-results');
+        let draggedItem = null;
+        draggableItems.forEach(item => {
+            item.addEventListener('dragstart', (e) => {
+                draggedItem = item;
+                e.dataTransfer.setData('text/plain', item.dataset.id); // Set data for transfer
+                item.classList.add('opacity-50', 'border-primary'); // Visual feedback
+            });
+            item.addEventListener('dragend', () => {
+                item.classList.remove('opacity-50', 'border-primary');
+                draggedItem = null;
+            });
+        });
+        comparisonZone.addEventListener('dragover', (e) => {
+            e.preventDefault(); // Allow drop
+            comparisonZone.classList.add('border-primary', 'bg-blue-50/20', 'dark:bg-blue-900/20');
+        });
+        comparisonZone.addEventListener('dragleave', () => {
+            comparisonZone.classList.remove('border-primary', 'bg-blue-50/20', 'dark:bg-blue-900/20');
+        });
+        comparisonZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            comparisonZone.classList.remove('border-primary', 'bg-blue-50/20', 'dark:bg-blue-900/20');
+            if (draggedItem) {
+                // Remove initial placeholder message if present
+                const initialMessage = comparisonZone.querySelector('p');
+                const initialIcon = comparisonZone.querySelector('.material-symbols-outlined');
+                if (initialMessage && initialIcon) {
+                    initialMessage.remove();
+                    initialIcon.remove();
+                }
+                // Make comparison-zone a flex container for dropped items
+                comparisonZone.classList.add('grid', 'grid-cols-1', 'gap-4', 'p-4', 'lg:grid-cols-2');
+                comparisonZone.classList.remove('flex', 'items-center', 'justify-center');
+                // Simulate adding a comparison card (clone and adapt)
+                const newComparisonCard = createComparisonCard(draggedItem);
+                comparisonZone.appendChild(newComparisonCard);
+                // Show the comparison results area if it was hidden
+                // For simplicity, we'll just show the static comparison-results,
+                // in a real app, this would dynamically update.
+                comparisonResults.classList.remove('hidden');
+                comparisonZone.style.minHeight = 'auto'; // Adjust min-height once items are dropped
+            }
+        });
+        function createComparisonCard(originalCard) {
+            const cardId = originalCard.dataset.id;
+            const cardType = originalCard.dataset.type;
+            const isGroup = cardType === 'group';
+            const name = originalCard.querySelector('.font-medium').textContent;
+            const subtext = originalCard.querySelector('.text-sm.text-slate-500').textContent;
+            const absenteismo = originalCard.querySelector('[title*="Absenteísmo"] span').textContent;
+            const faltas = originalCard.querySelector('[title*="Faltas"] span').textContent;
+            const avatarSrc = originalCard.querySelector('img') ? originalCard.querySelector('img').src : '';
+            // Clone the mini bar chart content
+            const miniChartContent = originalCard.querySelector('.h-16.w-full.bg-slate-200').innerHTML;
+            const card = document.createElement('div');
+            card.className = 'bg-slate-50 dark:bg-slate-800 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-3 relative';
+            card.dataset.id = cardId;
+            card.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        ${isGroup ? `<span class="material-symbols-outlined text-primary text-3xl">groups</span>` : `<img alt="Avatar de ${name}" class="w-10 h-10 rounded-full object-cover" src="${avatarSrc}"/>`}
+                        <div>
+                            <div class="font-medium text-slate-900 dark:text-white">${name}</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">${subtext}</div>
+                        </div>
+                    </div>
+                    <button class="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 remove-comparison-item">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="relative h-32 w-full bg-slate-200 dark:bg-slate-700 rounded-md p-2">
+                    <div class="absolute inset-0 flex items-end justify-around p-2">
+                        ${miniChartContent.split('</div>').filter(s => s.trim() !== '').map((barHtml, index) => `
+                            <div class="flex flex-col items-center text-xs text-slate-600 dark:text-slate-400">
+                                <div class="w-4 ${barHtml.includes('bg-red-500') ? 'bg-red-500' : 'bg-primary'} rounded-t-sm" style="${barHtml.match(/height:\s*(\d+%)/)?.[0]}"></div>
+                                <span>S${index + 1}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="flex justify-around items-center text-sm text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-700 pt-2">
+                    <div class="flex flex-col items-center">
+                        <span>Absenteísmo:</span>
+                        <span class="${absenteismo.includes('red') ? 'text-red-500' : 'text-green-500'} font-semibold">${absenteismo}</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span>Total Faltas:</span>
+                        <span class="font-semibold">${faltas}</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span>Produtividade:</span>
+                        <span class="${Math.random() > 0.5 ? 'text-green-500' : 'text-orange-500'} font-semibold">${Math.random() > 0.5 ? '+' : '-'} ${Math.floor(Math.random() * 15) + 5}%</span>
+                    </div>
+                </div>
+            `;
+            card.querySelector('.remove-comparison-item').addEventListener('click', () => {
+                card.remove();
+                if (comparisonZone.children.length === 0) {
+                    comparisonZone.innerHTML = `
+                        <span class="material-symbols-outlined text-6xl text-slate-400 dark:text-slate-600">drag_handle</span>
+                        <p class="text-center">Arraste e solte colaboradores ou grupos aqui para comparar a frequência.</p>
+                    `;
+                    comparisonZone.classList.remove('grid', 'grid-cols-1', 'gap-4', 'p-4', 'lg:grid-cols-2');
+                    comparisonZone.classList.add('flex', 'items-center', 'justify-center');
+                    comparisonZone.style.minHeight = '200px';
+                    comparisonResults.classList.add('hidden'); // Hide the static comparison results again
+                }
+            });
+            return card;
+        }
+    });
+</script>
+
+</body></html>

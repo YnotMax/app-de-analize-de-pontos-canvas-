@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Importação de Dados CSV - Assistente</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2563EB", // Blue-600
+            "background-light": "#F8FAFC", // Slate-50
+            "background-dark": "#020617", // Slate-950
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem", // 8px
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex h-screen">
+<aside class="w-20 bg-white dark:bg-slate-900 flex flex-col items-center py-6 shadow-md">
+<div class="mb-12">
+<span class="material-symbols-outlined text-3xl text-primary">analytics</span>
+</div>
+<nav class="flex flex-col items-center space-y-6">
+<a class="p-2 rounded text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="p-2 rounded text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+</a>
+<a class="p-2 rounded text-white bg-primary" href="#">
+<span class="material-symbols-outlined">upload_file</span>
+</a>
+<a class="p-2 rounded text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+</a>
+<a class="p-2 rounded text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto flex items-center justify-center">
+<div class="max-w-3xl w-full bg-white dark:bg-slate-900 p-8 rounded-lg shadow-xl border border-slate-200 dark:border-slate-800">
+<h1 class="text-3xl font-bold text-slate-800 dark:text-white mb-6 text-center">Assistente de Importação CSV</h1>
+<div class="step" id="step-1">
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-6xl text-primary mb-4">
+                file_upload
+              </span>
+<h2 class="text-2xl font-semibold text-slate-800 dark:text-white mb-2">1. Selecione seu arquivo CSV</h2>
+<p class="text-lg text-slate-600 dark:text-slate-300 mb-6">Comece arrastando e soltando seu arquivo aqui, ou selecione-o do seu computador.</p>
+<div class="w-full max-w-xl text-center border-2 border-dashed border-primary/50 dark:border-primary/40 rounded-xl p-12 flex flex-col items-center justify-center bg-blue-50/50 dark:bg-primary/10 transition-all hover:border-primary-700 hover:bg-blue-100/50 dark:hover:bg-primary/20 cursor-pointer">
+<span class="material-symbols-outlined text-7xl text-primary mb-4">
+                cloud_upload
+              </span>
+<p class="text-xl font-medium text-slate-700 dark:text-slate-300">Arraste e solte seu arquivo CSV aqui</p>
+<span class="text-slate-500 dark:text-slate-400 my-4 text-lg font-medium">ou</span>
+<button class="bg-primary hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors text-lg shadow-md" id="select-file-button">
+                Selecionar Arquivo
+              </button>
+<input accept=".csv" class="hidden" id="csv-file-input" type="file"/>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-6">Processamento local e seguro. Seus dados não saem do navegador.</p>
+</div>
+<div class="mt-8 flex justify-end w-full">
+<button class="bg-primary hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors text-lg shadow-md opacity-50 cursor-not-allowed" disabled="" id="next-step-1">
+              Próximo <span class="material-symbols-outlined ml-2 text-xl">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="step hidden" id="step-2">
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-6xl text-primary mb-4">
+                table_chart
+              </span>
+<h2 class="text-2xl font-semibold text-slate-800 dark:text-white mb-2">2. Visualize e Ajuste seu Modelo CSV</h2>
+<p class="text-lg text-slate-600 dark:text-slate-300 mb-6">Confira se as colunas estão corretas e faça ajustes antes de importar.</p>
+<div class="w-full max-w-full overflow-x-auto bg-slate-50 dark:bg-slate-800 rounded-lg p-4 shadow-inner border border-slate-200 dark:border-slate-700">
+<table class="w-full text-left table-auto text-slate-700 dark:text-slate-200">
+<thead>
+<tr class="bg-slate-200 dark:bg-slate-700">
+<th class="px-4 py-2 font-semibold text-sm">Nome</th>
+<th class="px-4 py-2 font-semibold text-sm">Data</th>
+<th class="px-4 py-2 font-semibold text-sm">Entrada</th>
+<th class="px-4 py-2 font-semibold text-sm">Saída</th>
+<th class="px-4 py-2 font-semibold text-sm">Justificativa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-4 py-2 text-sm">Marcos</td>
+<td class="px-4 py-2 text-sm">2023-01-02</td>
+<td class="px-4 py-2 text-sm">08:00</td>
+<td class="px-4 py-2 text-sm">18:00</td>
+<td class="px-4 py-2 text-sm">Justificado</td>
+</tr>
+<tr class="border-b border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-4 py-2 text-sm">Maria</td>
+<td class="px-4 py-2 text-sm">2023-01-01</td>
+<td class="px-4 py-2 text-sm">12:00</td>
+<td class="px-4 py-2 text-sm">18:00</td>
+<td class="px-4 py-2 text-sm">Justificado</td>
+</tr>
+<tr class="border-b border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-4 py-2 text-sm">João</td>
+<td class="px-4 py-2 text-sm">2023-11-01</td>
+<td class="px-4 py-2 text-sm">08:00</td>
+<td class="px-4 py-2 text-sm">18:00</td>
+<td class="px-4 py-2 text-sm">Justificado</td>
+</tr>
+<tr class="hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+<td class="px-4 py-2 text-sm">Ana</td>
+<td class="px-4 py-2 text-sm">2023-11-01</td>
+<td class="px-4 py-2 text-sm">15:00</td>
+<td class="px-4 py-2 text-sm">18:00</td>
+<td class="px-4 py-2 text-sm">Justificado</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-4">Os dados acima são um exemplo. Seu arquivo será carregado aqui após a seleção.</p>
+<div class="mt-8 flex justify-between w-full">
+<button class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-white font-semibold py-3 px-8 rounded-xl transition-colors text-lg shadow-md" id="prev-step-2">
+<span class="material-symbols-outlined mr-2 text-xl">arrow_back</span> Anterior
+</button>
+<button class="bg-primary hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors text-lg shadow-md" id="finalize-import">
+              Finalizar Importação <span class="material-symbols-outlined ml-2 text-xl">check_circle</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+    const step1 = document.getElementById('step-1');
+    const step2 = document.getElementById('step-2');
+    const nextStep1Button = document.getElementById('next-step-1');
+    const prevStep2Button = document.getElementById('prev-step-2');
+    const selectFileButton = document.getElementById('select-file-button');
+    const csvFileInput = document.getElementById('csv-file-input');
+    const dropArea = document.querySelector('.border-dashed'); // The drag-and-drop zone
+    let fileSelected = false; // To track if a file has been selected/dropped
+    function showStep(stepNumber) {
+        if (stepNumber === 1) {
+            step1.classList.remove('hidden');
+            step2.classList.add('hidden');
+        } else if (stepNumber === 2) {
+            step1.classList.add('hidden');
+            step2.classList.remove('hidden');
+        }
+    }
+    // Enable/disable 'Next' button based on file selection
+    function updateNextButtonState() {
+        if (fileSelected) {
+            nextStep1Button.classList.remove('opacity-50', 'cursor-not-allowed');
+            nextStep1Button.removeAttribute('disabled');
+        } else {
+            nextStep1Button.classList.add('opacity-50', 'cursor-not-allowed');
+            nextStep1Button.setAttribute('disabled', 'true');
+        }
+    }
+    // Handle file selection via button click
+    selectFileButton.addEventListener('click', () => {
+        csvFileInput.click();
+    });
+    // Handle file input change
+    csvFileInput.addEventListener('change', (event) => {
+        if (event.target.files.length > 0) {
+            console.log('File selected:', event.target.files[0].name);
+            // In a real app, you would process the file here
+            fileSelected = true;
+            updateNextButtonState();
+        } else {
+            fileSelected = false;
+            updateNextButtonState();
+        }
+    });
+    // Handle drag and drop
+    dropArea.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropArea.classList.add('border-primary-700', 'bg-blue-100/50', 'dark:bg-primary/20');
+    });
+    dropArea.addEventListener('dragleave', () => {
+        dropArea.classList.remove('border-primary-700', 'bg-blue-100/50', 'dark:bg-primary/20');
+    });
+    dropArea.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropArea.classList.remove('border-primary-700', 'bg-blue-100/50', 'dark:bg-primary/20');
+        const files = event.dataTransfer.files;
+        if (files.length > 0 && files[0].name.endsWith('.csv')) {
+            console.log('File dropped:', files[0].name);
+            // In a real app, you would process the file here
+            csvFileInput.files = files; // Assign dropped files to the input for consistency
+            fileSelected = true;
+            updateNextButtonState();
+        } else {
+            console.log('Dropped file is not a CSV or no file dropped.');
+            fileSelected = false;
+            updateNextButtonState();
+        }
+    });
+    // Navigation between steps
+    nextStep1Button.addEventListener('click', () => {
+        if (fileSelected) {
+            showStep(2);
+        }
+    });
+    prevStep2Button.addEventListener('click', () => {
+        showStep(1);
+    });
+    // Initial state
+    showStep(1);
+    updateNextButtonState(); // Set initial button state
+</script>
+
+</body></html>

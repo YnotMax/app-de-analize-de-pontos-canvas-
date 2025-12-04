@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Painel de Alertas Proativos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/css">
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }:root {
+            --primary-color: #3b82f6;--danger-color: #ef4444;--warning-color: #f59e0b;--info-color: #3b82f6;--success-color: #22c55e;}
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "var(--primary-color)",
+              danger: "var(--danger-color)",
+              warning: "var(--warning-color)",
+              info: "var(--info-color)",
+              success: "var(--success-color)",
+              "background-light": "#f8fafc",
+              "background-dark": "#0f172a",
+            },
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200">
+<div class="flex h-screen">
+<aside class="w-20 bg-white dark:bg-slate-900 flex flex-col items-center justify-between p-4 shadow-lg">
+<div class="flex flex-col items-center space-y-6">
+<div class="w-10 h-10 bg-primary rounded-lg"></div>
+<nav class="flex flex-col items-center space-y-4">
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+</a>
+<a class="p-2 bg-blue-100 dark:bg-slate-800 text-primary rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+</nav>
+</div>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</aside>
+<main class="flex-1 p-8 overflow-auto">
+<div class="max-w-7xl mx-auto">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-8">Tendências de Frequência do Colaborador</h1>
+<div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<select class="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary">
+<option>Filtrar por Período</option>
+<option>Últimos 7 dias</option>
+<option>Últimas 4 semanas</option>
+<option>Últimos 6 meses</option>
+</select>
+<select class="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary">
+<option>Filtrar por Setor</option>
+<option>TI</option>
+<option>RH</option>
+<option>Marketing</option>
+</select>
+<select class="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary">
+<option>Tipo de Ausência</option>
+<option>Médica</option>
+<option>Pessoal</option>
+<option>Atraso</option>
+</select>
+</div>
+<button class="bg-primary hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg flex items-center gap-2 transition-colors duration-200">
+<span class="material-symbols-outlined text-base">compare_arrows</span>
+                                Comparar Equipes
+                            </button>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 mb-8">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl text-primary">bar_chart</span>
+                            Evolução da Frequência
+                        </h2>
+<p class="text-slate-600 dark:text-slate-400 mb-4">Visualização da frequência do colaborador ao longo do tempo, com destaque para momentos críticos.</p>
+<div class="relative h-64 w-full bg-slate-50 dark:bg-slate-800 rounded-lg flex items-end justify-around p-4">
+<div class="flex flex-col items-center justify-end h-full">
+<span class="text-xs text-slate-500 dark:text-slate-400 mb-1">85%</span>
+<div class="w-8 bg-primary h-4/5 rounded-t-sm flex items-start justify-center relative">
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-2">Seg</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full">
+<span class="text-xs text-slate-500 dark:text-slate-400 mb-1">90%</span>
+<div class="w-8 bg-primary h-[90%] rounded-t-sm relative"></div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-2">Ter</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full">
+<span class="text-xs font-semibold text-danger dark:text-red-400 mb-1 flex items-center gap-1">
+                                    55% <span class="material-symbols-outlined text-base">crisis_alert</span>
+</span>
+<div class="w-8 bg-danger h-[55%] rounded-t-sm relative"></div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-2">Qua</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full">
+<span class="text-xs text-slate-500 dark:text-slate-400 mb-1">80%</span>
+<div class="w-8 bg-primary h-[80%] rounded-t-sm relative"></div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-2">Qui</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full">
+<span class="text-xs font-semibold text-warning dark:text-amber-400 mb-1 flex items-center gap-1">
+                                    65% <span class="material-symbols-outlined text-base">warning</span>
+</span>
+<div class="w-8 bg-warning h-[65%] rounded-t-sm relative"></div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-2">Sex</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full">
+<span class="text-xs text-slate-500 dark:text-slate-400 mb-1">95%</span>
+<div class="w-8 bg-primary h-full rounded-t-sm relative"></div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-2">Sab</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full">
+<span class="text-xs text-slate-500 dark:text-slate-400 mb-1">98%</span>
+<div class="w-8 bg-primary h-[98%] rounded-t-sm relative"></div>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-2">Dom</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 mb-8">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl text-warning">analytics</span>
+                            Sumário de Tendências (Últimos 7 dias)
+                        </h2>
+<p class="text-slate-600 dark:text-slate-400 mb-4">Colaboradores e departamentos com tendências de absenteísmo ou queda na frequência.</p>
+<ul class="space-y-3">
+<li class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-950/20 rounded-lg border border-red-200 dark:border-red-900">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-danger text-2xl">person_alert</span>
+<div>
+<div class="font-medium text-danger dark:text-red-400">Divino Sermingo</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Absenteísmo alto: 4.5% (+20% semana)</div>
+</div>
+</div>
+<a class="text-primary hover:text-blue-600 font-medium text-sm flex items-center gap-1" href="#">
+                                    Ver Detalhes
+                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</li>
+<li class="flex items-center justify-between p-3 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-900">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-warning text-2xl">trending_down</span>
+<div>
+<div class="font-medium text-warning dark:text-amber-400">Departamento de Marketing</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Frequência em declínio: 3.8% (+15% semana)</div>
+</div>
+</div>
+<a class="text-primary hover:text-blue-600 font-medium text-sm flex items-center gap-1" href="#">
+                                    Ver Detalhes
+                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</li>
+<li class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-950/20 rounded-lg border border-red-200 dark:border-red-900">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-danger text-2xl">person_alert</span>
+<div>
+<div class="font-medium text-danger dark:text-red-400">Royenio Cormaeno</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Ausências não justificadas: 4 faltas</div>
+</div>
+</div>
+<a class="text-primary hover:text-blue-600 font-medium text-sm flex items-center gap-1" href="#">
+                                    Ver Detalhes
+                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</li>
+<li class="flex items-center justify-between p-3 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-900">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-warning text-2xl">add_alert</span>
+<div>
+<div class="font-medium text-warning dark:text-amber-400">Adana Rilhan</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">3 justificativas pendentes</div>
+</div>
+</div>
+<a class="text-primary hover:text-blue-600 font-medium text-sm flex items-center gap-1" href="#">
+                                    Ver Detalhes
+                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden">
+<div class="p-6">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl text-info">groups</span>
+                            Detalhes da Equipe
+                        </h2>
+<p class="text-slate-600 dark:text-slate-400 mb-4">Visão geral e status atual dos colaboradores.</p>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-center px-6 pb-6 gap-4">
+<div class="relative w-full sm:w-auto flex-grow max-w-sm">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary placeholder-slate-400 dark:placeholder-slate-500" placeholder="Buscar por nome, cargo..." type="text"/>
+</div>
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<select class="w-full sm:w-auto bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary">
+<option>Departamento</option>
+<option>TI</option>
+<option>RH</option>
+<option>Marketing</option>
+</select>
+<select class="w-full sm:w-auto bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary">
+<option>Status</option>
+<option>Presente</option>
+<option>Ausente</option>
+<option>Férias</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800">
+<tr>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Colaborador</th>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Taxa de Absenteísmo</th>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Total de Faltas (Mês)</th>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Justificativas Pendentes</th>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Status</th>
+<th class="p-4 font-semibold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider">Ações</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Divino Sermingo" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSBSV6F5aObkZ0e89HsEZgnM7YaYPbKyuVma-kepeGmanMCQbfPzs1Q-VJ9QkFYFWn4bM6M2fgqoJzGay6OfFs5h9wW5NYO1GGbqItNDO9M1uMi6gIl0xtbH01G8pObDS33TswcFlPP7or4Mb-kc_dCKo0mjxxIWAwZLoYtXMpCzGMMbtTAZP4gx5rNT4JwrdDSIwsmd_ioOI4V6viz6QB70I01aMS8x2yo-AHwBdDAwlvULMQpU1EQj8lzI4SV3hMko-8oPUkntU"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Divino Sermingo</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Cargo</div>
+</div>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-1">
+<span>4.5%</span>
+<span class="text-red-500 flex items-center text-sm">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+                                                20%
+                                            </span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">3</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-500 text-xl">warning</span>
+<span>1</span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">Presente</span>
+</td>
+<td class="p-4 whitespace-nowrap">
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Adiana Bulias" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfuLrwCEABzD2srEo_U_CjshrJ9_2loRO4btrWaEiGJbMLVFD1BwEMPK4Kho_mW2zlWBLJsWZ3iWcyD3s-7JcLuVnPKWbPhXzkRTR0MbPP0ttx9QDwat5NEfCd4woDQcXNr5f-A1VqxB9lGTmYxkEs6OyZShEGeEdoFvzdgseImdPkzHPd4Yq5rcgvjgOAgtquYuFlyNCWz91mQLCUhBXkcTt6V1MBx53bMVRWAi_Fz06kGX_ZxMicdLWBqJ6UH7qmdIKoeIvXD58"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Adiana Bulias</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Cargo</div>
+</div>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-1">
+<span>4.5%</span>
+<span class="text-red-500 flex items-center text-sm">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+                                                20%
+                                            </span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">2</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-500 text-xl">warning</span>
+<span>1</span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300">Ausente</span>
+</td>
+<td class="p-4 whitespace-nowrap">
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Adana Marco" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaPet_OGJsKv4PgLl9byoCuZkh4dgluaEk61D4i9_fQ287eTe2pEVkcxiQta7Nq4oo6nEuWly56w-6VKQbg4dbzw8EeckofPaQPRUOpFRNN5ro8V9CWe7LBRq1Ky1uLTLYCU9VSOJYaceOx67MKO_aSj38xOLiCCk4xFvtp4h0TvTytb9goOlb2G2mUqmRfQ_Raa5AOl1H8FsCOEKtw0-PA_nYT8ThgAajZLTOagihwPSlzzl1Wz73zcN6lyHq0i1S5WBr-Qk3XpQ"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Adana Marco</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Cargo</div>
+</div>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-1">
+<span>4.3%</span>
+<span class="text-red-500 flex items-center text-sm">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+                                                20%
+                                            </span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">2</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-500 text-xl">warning</span>
+<span>2</span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">Férias</span>
+</td>
+<td class="p-4 whitespace-nowrap">
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Royenio Cormaeno" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjx74A1jUURWLec39zCQOEviRERbNhFah6ashA1pz6rqfUmgLR_4FMGE1DtYhfpGA4EOMrWFsmoFwj02FLMrZSPs93IpCfIg7aVUByKT3iu7Beh7LzlNLu3u241-LUa0krvtJKXN8xiQGiwKutIN2tQuU-wwZeC05ZlvFZ3yayCcSvd5XYHFA_nsyVWTiPWUZOpzTVfA28GE7A2Qm84liyduwxtv5x_TfZ3qYkBW5vOMj_fh4TaX5mqtSe9Q4WrDTSOtdDD_tU8xw"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Royenio Cormaeno</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Cargo</div>
+</div>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-1">
+<span>3.5%</span>
+<span class="text-red-500 flex items-center text-sm">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+                                                20%
+                                            </span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">4</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-xl">remove</span>
+<span>0</span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300">Ausente</span>
+</td>
+<td class="p-4 whitespace-nowrap">
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Jersen Sefranger" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdaa6ueRKJRRov7oMZFN7R_wUtOynpMQFNCr-IBcWCVnM42GXRk4AhAstvvlOOPGuzz6NYZZ_e1DIsb4ezfVsCAEI4bdYhJUwtlJDgqWYF6pw380_R2Yr2yTCrgwdNn6_NX3dZU65SwKzzbgaJwvYZyAzw0VHYbOdSZ2DnO3F4UG7-CGg-hm_n0ACuCRxKH5B8BNMsxwzCaSw9mVRo4MelJ7ErLj_OvGotPymibzYnx-cT69x_Y_wCOXJN4BzKERCu3l-gz_JWN18"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Jersen Sefranger</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Cargo</div>
+</div>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-1">
+<span>2.5%</span>
+<span class="text-green-500 flex items-center text-sm">
+<span class="material-symbols-outlined text-base">arrow_downward</span>
+                                                19%
+                                            </span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">1</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-xl">remove</span>
+<span>0</span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300">Ausente</span>
+</td>
+<td class="p-4 whitespace-nowrap">
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<img alt="Avatar de Adana Rilhan" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYp1CoDBk__9iudZ46MKEzeqsVtfbRiQMGOAz1yswBuWjuZoL0kQhR5d6E-P7cCzhCYksB9Zep99resbqjbwduPr-XUEH6tXhh_5h5RNrrWBDBBZCnDpjjQ0x7RC7BI02KxYl-XOuWxg5DPnGQ8_yrMbANr2A_smsieABVuOiribp_xp9aEJvPfWvaHT5rImI2Id835zrH_GX3jHj0Rs1XKe9mN6HExgtEJ3qr3mUjgZGvM_fZoJBhCdSZ-jq090_IcDZO5UWiiQ4"/>
+<div>
+<div class="font-medium text-slate-900 dark:text-white">Adana Rilhan</div>
+<div class="text-sm text-slate-500 dark:text-slate-400">Cargo</div>
+</div>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-1">
+<span>2.5%</span>
+<span class="text-green-500 flex items-center text-sm">
+<span class="material-symbols-outlined text-base">arrow_downward</span>
+                                                15%
+                                            </span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">3</td>
+<td class="p-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-500 text-xl">warning</span>
+<span>3</span>
+</div>
+</td>
+<td class="p-4 whitespace-nowrap">
+<span class="px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">Presente</span>
+</td>
+<td class="p-4 whitespace-nowrap">
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

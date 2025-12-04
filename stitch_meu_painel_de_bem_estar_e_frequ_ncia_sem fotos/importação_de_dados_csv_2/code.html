@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Importação de Dados CSV</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2563EB", // Blue-600
+            "background-light": "#F8FAFC", // Slate-50
+            "background-dark": "#020617", // Slate-950
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem", // 8px
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.hidden-file-input {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex h-screen">
+<aside class="w-20 bg-white dark:bg-slate-900 flex flex-col items-center py-6 shadow-md">
+<div class="mb-12">
+<span class="material-icons-outlined text-3xl text-primary">analytics</span>
+</div>
+<nav class="flex flex-col items-center space-y-6">
+<a class="p-2 rounded text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined">home</span>
+</a>
+<a class="p-2 rounded text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined">grid_view</span>
+</a>
+<a class="p-2 rounded text-white bg-primary" href="#">
+<span class="material-icons-outlined">upload_file</span>
+</a>
+<a class="p-2 rounded text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined">groups</span>
+</a>
+<a class="p-2 rounded text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined">settings</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto">
+<header class="mb-8">
+<h1 class="text-3xl font-bold text-slate-800 dark:text-white">Sistema de Análise de Pontos</h1>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2">
+<div class="bg-white dark:bg-slate-900 p-8 rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 h-full flex flex-col justify-center items-center">
+<div class="w-full max-w-lg text-center">
+<h2 class="text-2xl font-semibold text-slate-800 dark:text-white mb-6">Importação de Dados CSV</h2>
+<p class="text-slate-600 dark:text-slate-400 mb-8">
+                Clique no botão abaixo para iniciar a importação em nosso assistente conversacional.
+              </p>
+<button class="bg-primary hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors shadow-md">
+                Iniciar Importação Conversacional
+              </button>
+</div>
+</div>
+</div>
+<div class="lg:col-span-1">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 h-full">
+<h2 class="text-xl font-semibold text-slate-800 dark:text-white mb-4">Modelo de CSV</h2>
+<div class="bg-slate-100 dark:bg-slate-800 rounded-lg p-4 font-mono text-xs text-slate-600 dark:text-slate-300 overflow-x-auto">
+<pre><code>Nome,Data,Entrada,Saida,Justificativa
+Marcos,2023-01-02,08:00,18:00,Justificado
+Maria,2023-01-01,12:00,18:00,Justificado
+João,2023-11-01,08:00,18:00,Justificado
+Ana,2023-11-01,15:00,18:00,Justificado</code></pre>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<div class="fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 flex items-center justify-center p-4 z-50">
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-xl w-full max-w-2xl h-[calc(100vh-8rem)] flex flex-col">
+<div class="flex justify-between items-center p-6 border-b border-slate-200 dark:border-slate-800">
+<h2 class="text-2xl font-bold text-slate-800 dark:text-white">Assistente de Importação CSV</h2>
+<button class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
+<span class="material-icons-outlined text-2xl">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6">
+<div class="flex items-start">
+<div class="flex-shrink-0 mr-3">
+<span class="material-symbols-outlined text-3xl text-primary">robot_2</span>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg shadow-sm max-w-[80%]">
+<p class="text-slate-700 dark:text-slate-200">Olá! Eu sou o seu assistente de importação de dados. Para começarmos, por favor, me envie seu arquivo CSV.</p>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Você pode arrastar e soltar o arquivo aqui ou selecioná-lo manualmente.</p>
+</div>
+</div>
+<div class="flex justify-end items-start">
+<div class="bg-blue-50 dark:bg-primary/10 p-6 rounded-lg shadow-sm max-w-[80%] text-center border-2 border-dashed border-primary/50 dark:border-primary/40">
+<span class="material-icons-outlined text-5xl text-primary mb-3">file_upload</span>
+<p class="text-lg font-medium text-slate-700 dark:text-slate-300">Arraste e solte o arquivo</p>
+<span class="text-slate-500 dark:text-slate-400 my-3 block">ou</span>
+<label class="inline-block bg-primary hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors cursor-pointer" for="csv-upload">
+                Selecionar Arquivo
+              </label>
+<input accept=".csv" class="hidden-file-input" id="csv-upload" type="file"/>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex-shrink-0 mr-3">
+<span class="material-symbols-outlined text-3xl text-primary">robot_2</span>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg shadow-sm max-w-[80%]">
+<p class="text-slate-700 dark:text-slate-200">Perfeito! Recebi seu arquivo. Aqui está uma prévia das primeiras linhas:</p>
+<div class="bg-white dark:bg-slate-900 rounded-md p-3 mt-3 text-xs font-mono overflow-x-auto border border-slate-200 dark:border-slate-700">
+<pre class="text-slate-700 dark:text-slate-300"><code>Nome,Data,Entrada,Saida,Justificativa
+Marcos,2023-01-02,08:00,18:00,Justificado
+Maria,2023-01-01,12:00,18:00,Justificado
+</code></pre>
+</div>
+<p class="text-slate-700 dark:text-slate-200 mt-3">Os dados acima representam os cabeçalhos das colunas?</p>
+<div class="flex space-x-2 mt-4">
+<button class="bg-primary hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-lg transition-colors">Sim, estão corretos</button>
+<button class="bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-white text-sm py-2 px-4 rounded-lg transition-colors">Não, os cabeçalhos estão nas linhas abaixo</button>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex-shrink-0 mr-3">
+<span class="material-symbols-outlined text-3xl text-primary">robot_2</span>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg shadow-sm max-w-[80%]">
+<p class="text-slate-700 dark:text-slate-200">Para garantir a melhor análise, certifique-se de que seu arquivo siga este formato:</p>
+<div class="bg-white dark:bg-slate-900 rounded-md p-3 mt-3 text-xs font-mono overflow-x-auto border border-slate-200 dark:border-slate-700">
+<pre class="text-slate-700 dark:text-slate-300"><code>Nome,Data (YYYY-MM-DD),Entrada (HH:MM),Saida (HH:MM),Justificativa</code></pre>
+</div>
+<p class="text-slate-700 dark:text-slate-200 mt-3">Precisamos das colunas exatas e no formato especificado para processar seus dados corretamente.</p>
+<div class="flex space-x-2 mt-4">
+<button class="bg-primary hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-lg transition-colors">Entendi, vou ajustar</button>
+<button class="bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-white text-sm py-2 px-4 rounded-lg transition-colors">Continuar mesmo assim (pode haver erros)</button>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-slate-200 dark:border-slate-800 flex justify-end">
+<button class="bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-medium py-2 px-5 rounded-lg transition-colors">
+            Cancelar Importação
+          </button>
+</div>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HR Command Center: Tendências de Frequência</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4365FF", // Original primary blue
+            "accent-green": "#10B981", // For 'Present' status in heatmap or positive trends
+            "accent-yellow": "#FBBF24", // For 'Partial absence' or warnings
+            "accent-red": "#EF4444",   // For 'Full absence' or critical alerts
+            "background-light": "#F0F4F8", // Lighter background
+            "background-dark": "#0B153A", // Main dark background
+            "panel-dark": "#162045",      // Darker panel background
+            "border-dark": "#2A375A",     // Dark border
+            "text-dark-light": "#E0E7FF", // Light text on dark backgrounds
+            "text-dark-muted": "#9CA3AF", // Muted text on dark backgrounds
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+            lg: "0.75rem",
+          },
+          boxShadow: {
+            'card-dark': '0 4px 12px rgba(0, 0, 0, 0.4)',
+          }
+        },
+      },
+    };
+  </script>
+<style type="text/tailwindcss">
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+    .panel {
+      @apply bg-panel-dark p-6 rounded-lg shadow-card-dark border border-border-dark;
+    }
+    .text-gradient-blue {
+      @apply bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text;
+    }
+    .text-gradient-red {
+      @apply bg-gradient-to-r from-red-400 to-red-600 text-transparent bg-clip-text;
+    }.heatmap-cell {
+      @apply w-5 h-5 rounded-sm flex items-center justify-center text-xs text-background-dark font-medium;
+    }.absence-category-inicio { @apply bg-primary; }.absence-category-almoco { @apply bg-accent-yellow; }.absence-category-antecipada { @apply bg-accent-red; }.absence-category-atestado { @apply bg-teal-500; }.absence-category-ferias { @apply bg-indigo-500; }.absence-category-others { @apply bg-gray-500; }.legend-present { @apply bg-accent-green; }
+    .legend-partial { @apply bg-accent-yellow; }
+    .legend-full { @apply bg-accent-red; }
+    .legend-weekend { @apply bg-gray-700; }
+    .legend-holiday { @apply bg-purple-600; }
+  </style>
+</head>
+<body class="font-display bg-background-dark text-text-dark-light antialiased">
+<div class="flex h-screen">
+<aside class="w-20 bg-[#020922] text-gray-400 flex flex-col items-center py-6 border-r border-border-dark">
+<div class="flex flex-col items-center justify-between h-full">
+<nav class="flex flex-col items-center space-y-6">
+<a aria-label="Home" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a aria-label="Health" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">favorite</span>
+</a>
+<a aria-label="Users" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+</a>
+<a aria-label="Calendar" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+</a>
+<a aria-label="Bar Chart" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+</a>
+<a aria-label="Timeline" class="p-2 rounded-lg bg-primary text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">timeline</span>
+</a>
+<a aria-label="Trophy" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+</a>
+</nav>
+<a aria-label="Logout" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<h1 class="text-4xl font-extrabold mb-8 text-gradient-blue">HR Command Center: Análise de Frequência</h1>
+<p class="text-lg text-text-dark-muted mb-8 max-w-2xl">
+            Visão geral da evolução da frequência do colaborador ao longo do tempo, identificando padrões de presença e ausência para decisões de gestão proativas.
+</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="md:col-span-2 panel">
+<h2 class="text-xl font-semibold mb-6 text-text-dark-light">Total de Horas de Ausência por Categoria (Últimos 12 Meses)</h2>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-text-dark-muted">Jane Doe</span>
+<span class="text-sm font-semibold">120 Horas</span>
+</div>
+<div class="flex h-6 rounded-md overflow-hidden bg-gray-700">
+<div class="absence-category-inicio" style="width: 20%" title="Início do Expediente: 24h"></div>
+<div class="absence-category-almoco" style="width: 35%" title="Volta do Almoço: 42h"></div>
+<div class="absence-category-antecipada" style="width: 15%" title="Saída Antecipada: 18h"></div>
+<div class="absence-category-atestado" style="width: 20%" title="Atestado Médico: 24h"></div>
+<div class="absence-category-others" style="width: 10%" title="Outros: 12h"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-text-dark-muted">John Smith</span>
+<span class="text-sm font-semibold">85 Horas</span>
+</div>
+<div class="flex h-6 rounded-md overflow-hidden bg-gray-700">
+<div class="absence-category-almoco" style="width: 40%" title="Volta do Almoço: 34h"></div>
+<div class="absence-category-antecipada" style="width: 20%" title="Saída Antecipada: 17h"></div>
+<div class="absence-category-ferias" style="width: 30%" title="Férias (não planejadas): 25.5h"></div>
+<div class="absence-category-others" style="width: 10%" title="Outros: 8.5h"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-text-dark-muted">Maria Silva</span>
+<span class="text-sm font-semibold">50 Horas</span>
+</div>
+<div class="flex h-6 rounded-md overflow-hidden bg-gray-700">
+<div class="absence-category-inicio" style="width: 30%" title="Início do Expediente: 15h"></div>
+<div class="absence-category-atestado" style="width: 50%" title="Atestado Médico: 25h"></div>
+<div class="absence-category-antecipada" style="width: 20%" title="Saída Antecipada: 10h"></div>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-lg font-medium mb-4 text-text-dark-light">Legenda de Categorias:</h3>
+<div class="grid grid-cols-2 gap-y-2 gap-x-4 text-sm text-text-dark-muted">
+<div class="flex items-center">
+<span class="w-4 h-4 rounded-full absence-category-inicio mr-2"></span>
+<span>Início do Expediente</span>
+</div>
+<div class="flex items-center">
+<span class="w-4 h-4 rounded-full absence-category-almoco mr-2"></span>
+<span>Volta do Almoço</span>
+</div>
+<div class="flex items-center">
+<span class="w-4 h-4 rounded-full absence-category-antecipada mr-2"></span>
+<span>Saída Antecipada</span>
+</div>
+<div class="flex items-center">
+<span class="w-4 h-4 rounded-full absence-category-atestado mr-2"></span>
+<span>Atestado Médico</span>
+</div>
+<div class="flex items-center">
+<span class="w-4 h-4 rounded-full absence-category-ferias mr-2"></span>
+<span>Férias (não planejadas)</span>
+</div>
+<div class="flex items-center">
+<span class="w-4 h-4 rounded-full absence-category-others mr-2"></span>
+<span>Outros</span>
+</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-1 flex flex-col space-y-8">
+<div class="panel">
+<h2 class="text-xl font-semibold mb-4 text-text-dark-light">Calendário de Ausências (Últimos 3 Meses)</h2>
+<div class="flex justify-between items-center text-text-dark-muted mb-4">
+<button class="p-1 rounded hover:bg-white/10 transition-colors duration-200">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<span class="font-semibold text-lg text-text-dark-light">Março 2024</span>
+<button class="p-1 rounded hover:bg-white/10 transition-colors duration-200">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-sm">
+<div class="text-text-dark-muted font-medium">Dom</div>
+<div class="text-text-dark-muted font-medium">Seg</div>
+<div class="text-text-dark-muted font-medium">Ter</div>
+<div class="text-text-dark-muted font-medium">Qua</div>
+<div class="text-text-dark-muted font-medium">Qui</div>
+<div class="text-text-dark-muted font-medium">Sex</div>
+<div class="text-text-dark-muted font-medium">Sáb</div>
+<div class="heatmap-cell bg-gray-800 text-gray-700"></div>
+<div class="heatmap-cell bg-gray-800 text-gray-700"></div>
+<div class="heatmap-cell bg-accent-green">1</div>
+<div class="heatmap-cell bg-accent-green">2</div>
+<div class="heatmap-cell bg-gray-700 text-text-dark-muted">3</div>
+<div class="heatmap-cell bg-gray-700 text-text-dark-muted">4</div>
+<div class="heatmap-cell bg-accent-green">5</div>
+<div class="heatmap-cell bg-accent-green">6</div>
+<div class="heatmap-cell bg-accent-yellow text-background-dark">7</div>
+<div class="heatmap-cell bg-accent-green">8</div>
+<div class="heatmap-cell bg-accent-green">9</div>
+<div class="heatmap-cell bg-gray-700 text-text-dark-muted">10</div>
+<div class="heatmap-cell bg-gray-700 text-text-dark-muted">11</div>
+<div class="heatmap-cell bg-accent-green">12</div>
+<div class="heatmap-cell bg-accent-green">13</div>
+<div class="heatmap-cell bg-accent-red text-white">14</div>
+<div class="heatmap-cell bg-accent-green">15</div>
+<div class="heatmap-cell bg-accent-green">16</div>
+<div class="heatmap-cell bg-gray-700 text-text-dark-muted">17</div>
+<div class="heatmap-cell bg-gray-700 text-text-dark-muted">18</div>
+<div class="heatmap-cell bg-accent-green">19</div>
+<div class="heatmap-cell bg-accent-yellow text-background-dark">20</div>
+<div class="heatmap-cell bg-accent-green">21</div>
+<div class="heatmap-cell bg-accent-green">22</div>
+<div class="heatmap-cell bg-gray-700 text-text-dark-muted">23</div>
+<div class="heatmap-cell bg-gray-700 text-text-dark-muted">24</div>
+<div class="heatmap-cell bg-accent-green">25</div>
+<div class="heatmap-cell bg-accent-green">26</div>
+<div class="heatmap-cell bg-accent-green">27</div>
+<div class="heatmap-cell bg-accent-yellow text-background-dark">28</div>
+<div class="heatmap-cell bg-accent-green">29</div>
+<div class="heatmap-cell bg-gray-700 text-text-dark-muted">30</div>
+<div class="heatmap-cell bg-gray-700 text-text-dark-muted">31</div>
+</div>
+<div class="mt-4 pt-4 border-t border-border-dark flex flex-wrap justify-center gap-4 text-xs text-text-dark-muted">
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full legend-present mr-1"></span>
+<span>Presente</span>
+</div>
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full legend-partial mr-1"></span>
+<span>Ausência Parcial</span>
+</div>
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full legend-full mr-1"></span>
+<span>Ausência Total</span>
+</div>
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full legend-weekend mr-1"></span>
+<span>Fim de Semana</span>
+</div>
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full legend-holiday mr-1"></span>
+<span>Feriado</span>
+</div>
+</div>
+</div>
+<div class="panel flex-1 flex flex-col">
+<h2 class="text-xl font-semibold mb-4 text-text-dark-light">Resumo e Insights Acionáveis</h2>
+<div class="space-y-4 mb-6">
+<div class="flex justify-between items-center text-text-dark-muted">
+<span>Total de Horas Ausentes:</span>
+<span class="font-bold text-lg text-text-dark-light">255h</span>
+</div>
+<div class="flex justify-between items-center text-text-dark-muted">
+<span>Média de Ausência/Mês:</span>
+<span class="font-bold text-lg text-text-dark-light">21.25h</span>
+</div>
+<div class="flex justify-between items-center text-text-dark-muted">
+<span>Dias com Ausência Parcial:</span>
+<span class="font-bold text-lg text-accent-yellow">18</span>
+</div>
+<div class="flex justify-between items-center text-text-dark-muted">
+<span>Dias com Ausência Total:</span>
+<span class="font-bold text-lg text-accent-red">9</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-border-dark">
+<div class="flex items-center mb-4">
+<div class="bg-primary/20 p-2 rounded-full mr-3">
+<span class="material-symbols-outlined text-primary text-2xl">lightbulb</span>
+</div>
+<h3 class="font-bold text-lg text-text-dark-light">Dicas para Gestão:</h3>
+</div>
+<ul class="list-disc list-inside space-y-2 text-text-dark-muted ml-2">
+<li>
+<span class="text-blue-200">Percebemos que 45% das ausências parciais ocorrem após o almoço. Considere flexibilidade ou programas de bem-estar pós-almoço.</span>
+</li>
+<li>
+<span class="text-red-200">O colaborador John Smith apresenta um padrão de ausências em início de semana. Verifique a carga de trabalho ou possíveis sinais de burnout.</span>
+</li>
+<li>
+<span class="text-green-200">A equipe B demonstra as menores taxas de ausência. Analise suas práticas para identificar e replicar fatores de sucesso.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

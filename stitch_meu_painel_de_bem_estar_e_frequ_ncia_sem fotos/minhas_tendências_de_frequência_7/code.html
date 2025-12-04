@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Absence Management Scorecard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4365FF", // Original primary blue
+            secondary: "#6A5ACD", // A more vibrant purple for general highlights
+            success: "#22C55E", // Green for good attendance
+            warning: "#FACC15", // Yellow for moderate issues
+            danger: "#EF4444", // Red for critical issues
+            "background-light": "#F8FAFC",
+            "background-dark": "#0B153A",
+            "card-dark": "#020922", // Darker card background
+            "text-light": "#E0E7FF", // Lighter text for dark backgrounds
+            "text-dark": "#1F2937", // Darker text for light backgrounds
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.75rem", // Slightly larger radius
+            full: "9999px",
+            lg: "1rem",
+            xl: "1.5rem",
+          },
+          boxShadow: {
+            'custom': '0 10px 30px -5px rgba(0, 0, 0, 0.25)', // Custom shadow for cards
+          }
+        },
+      },
+    };
+  </script>
+<style type="text/tailwindcss">
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }.radial-progress {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;border-radius: 50%;
+      overflow: hidden;background-color: #2D3748;}
+    .radial-progress-segment {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      clip: rect(0px, 100%, 100%, 50%);}
+    .radial-progress-segment::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      clip: rect(0px, 50%, 100%, 0px);background-color: transparent;transform-origin: center;
+    }.conic-gradient-tracker {
+      background: conic-gradient(
+        var(--segment-start-color-1) 0% var(--segment-end-1),
+        var(--segment-start-color-2) var(--segment-end-1) var(--segment-end-2),
+        var(--segment-start-color-3) var(--segment-end-2) var(--segment-end-3),
+        var(--remainder-color) var(--segment-end-3) 100%
+      );
+    }
+  </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-dark dark:text-text-light">
+<div class="flex h-screen">
+<aside class="w-20 bg-[#020922] text-gray-400 flex flex-col items-center py-6 shadow-lg">
+<div class="flex flex-col items-center justify-between h-full">
+<nav class="flex flex-col items-center space-y-6">
+<a aria-label="Home" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a aria-label="Health" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">favorite</span>
+</a>
+<a aria-label="Users" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">group</span>
+</a>
+<a aria-label="Calendar" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+</a>
+<a aria-label="Bar Chart" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+</a>
+<a aria-label="Timeline" class="p-2 rounded-lg bg-primary text-white shadow-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">timeline</span>
+</a>
+<a aria-label="Trophy" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+</a>
+</nav>
+<a aria-label="Logout" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto bg-gray-100 dark:bg-background-dark">
+<div class="max-w-7xl mx-auto">
+<h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-10 tracking-tight">Absence Management Scorecard</h1>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+<div class="bg-white dark:bg-card-dark p-8 rounded-xl shadow-custom flex flex-col items-center justify-center">
+<h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Overall Attendance Score</h2>
+<div class="relative w-72 h-72">
+<div class="absolute inset-0 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+<div class="absolute inset-0 rounded-full conic-gradient-tracker" style="
+                    --segment-start-color-1: #EF4444;--segment-end-1: 15%;--segment-start-color-2: #FACC15;--segment-end-2: 40%;--segment-start-color-3: #6A5ACD;--segment-end-3: 80%;--remainder-color: #22C55E;">
+<div class="absolute inset-4 sm:inset-6 bg-white dark:bg-card-dark rounded-full flex flex-col items-center justify-center space-y-1">
+<span class="text-5xl font-extrabold text-gray-900 dark:text-white">85%</span>
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400">Attendance Rate</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-x-6 gap-y-4 mt-8 text-sm font-medium">
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full bg-danger mr-2"></span>
+<span class="text-gray-700 dark:text-gray-300">Saída Antecipada (15%)</span>
+</div>
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full bg-warning mr-2"></span>
+<span class="text-gray-700 dark:text-gray-300">Início do Expediente (25%)</span>
+</div>
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full bg-secondary mr-2"></span>
+<span class="text-gray-700 dark:text-gray-300">Volta do Almoço (40%)</span>
+</div>
+<div class="flex items-center">
+<span class="w-3 h-3 rounded-full bg-success mr-2"></span>
+<span class="text-gray-700 dark:text-gray-300">No Incidents (20%)</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark p-8 rounded-xl shadow-custom flex flex-col justify-between">
+<div>
+<h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Key Insights</h2>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-lg">
+                This scorecard provides a proactive overview of employee attendance patterns. We've identified a recurring trend: <strong class="text-secondary dark:text-primary">40% of recent absences occur after the lunch break.</strong>
+                This pattern suggests a potential need for a refreshed return-to-work strategy or a discussion about energy levels and flexibility post-break.
+            </p>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+                The overall attendance rate stands at <strong class="text-success dark:text-success">85%</strong>, which is within an acceptable range, but targeted intervention in specific areas can boost productivity and well-being.
+            </p>
+</div>
+<div class="mt-8 p-6 rounded-lg bg-gradient-to-br from-blue-500 to-primary text-white shadow-lg">
+<div class="flex items-start mb-4">
+<span class="material-symbols-outlined text-3xl mr-3 opacity-90">task_alt</span>
+<h3 class="font-bold text-2xl">Action Item:</h3>
+</div>
+<p class="text-lg mb-4 opacity-95">
+                Based on the identified pattern of post-lunch absences, consider scheduling a brief, supportive follow-up with the employee. Discuss potential strategies for a more energizing break or explore options for flexible work arrangements if applicable.
+            </p>
+<div class="flex space-x-4">
+<button class="px-5 py-2 bg-white text-primary rounded-lg font-semibold shadow hover:bg-gray-100 transition-colors">
+<span class="material-symbols-outlined align-middle -mt-0.5 mr-2">calendar_month</span>Schedule Follow-up
+                </button>
+<button class="px-5 py-2 bg-transparent border-2 border-white text-white rounded-lg font-semibold shadow hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined align-middle -mt-0.5 mr-2">flag</span>Set a Goal
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

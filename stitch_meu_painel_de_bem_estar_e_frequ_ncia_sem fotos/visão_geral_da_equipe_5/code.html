@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tendências de Frequência do Colaborador</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/css">
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "background-light": "#f8fafc",
+              "background-dark": "#0f172a",
+            },
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200">
+<div class="flex h-screen">
+<aside class="w-20 bg-white dark:bg-slate-900 flex flex-col items-center justify-between p-4 shadow-lg">
+<div class="flex flex-col items-center space-y-6">
+<div class="w-10 h-10 bg-primary rounded-lg"></div>
+<nav class="flex flex-col items-center space-y-4">
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+</a>
+<a class="p-2 bg-blue-100 dark:bg-slate-800 text-primary rounded-lg transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+</a>
+</nav>
+</div>
+<a class="p-2 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</aside>
+<main class="flex-1 p-8 overflow-auto">
+<div class="max-w-7xl mx-auto">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-8">Tendências de Frequência do Colaborador</h1>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="md:col-span-2 flex flex-col sm:flex-row justify-between items-center mb-0 gap-4">
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<select class="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary">
+<option>Todos os Departamentos</option>
+<option>TI</option>
+<option>RH</option>
+<option>Marketing</option>
+</select>
+<select class="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary">
+<option>Todos os Tipos de Ausência</option>
+<option>Doença</option>
+<option>Férias</option>
+<option>Licença</option>
+</select>
+</div>
+<div class="flex items-center gap-2 w-full sm:w-auto">
+<span class="text-sm text-slate-600 dark:text-slate-400 whitespace-nowrap">Período:</span>
+<button class="px-3 py-1 text-sm bg-primary text-white rounded-lg hover:bg-blue-600 transition-colors duration-200">Ano</button>
+<button class="px-3 py-1 text-sm bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-200">Mês</button>
+<button class="px-3 py-1 text-sm bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-200">Semana</button>
+<button class="px-3 py-1 text-sm bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-200">Dia</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 mb-8">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">bar_chart</span>
+                Evolução da Frequência (Absenteísmo % Anual)
+                <span class="ml-auto text-sm text-slate-500 dark:text-slate-400">(Clique nas barras para detalhar)</span>
+</h2>
+<div class="h-80 flex items-end justify-around border-b border-l border-slate-200 dark:border-slate-700 pb-2 pl-2">
+<div class="absolute left-8 h-80 flex flex-col justify-between items-end text-xs text-slate-500 dark:text-slate-400">
+<span>20%</span>
+<span>15%</span>
+<span>10%</span>
+<span>5%</span>
+<span>0%</span>
+</div>
+<div class="flex flex-grow justify-evenly items-end h-full relative">
+<div class="w-[4%] h-[45%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Jan: 9%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Jan</span>
+</div>
+<div class="w-[4%] h-[55%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Fev: 11%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Fev</span>
+</div>
+<div class="w-[4%] h-[65%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Mar: 13%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Mar</span>
+</div>
+<div class="w-[4%] h-[40%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Abr: 8%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Abr</span>
+</div>
+<div class="w-[4%] h-[70%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Mai: 14%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Mai</span>
+</div>
+<div class="w-[4%] h-[60%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Jun: 12%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Jun</span>
+</div>
+<div class="w-[4%] h-[50%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Jul: 10%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Jul</span>
+</div>
+<div class="w-[4%] h-[80%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Ago: 16%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Ago</span>
+</div>
+<div class="w-[4%] h-[45%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Set: 9%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Set</span>
+</div>
+<div class="w-[4%] h-[55%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Out: 11%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Out</span>
+</div>
+<div class="w-[4%] h-[65%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Nov: 13%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Nov</span>
+</div>
+<div class="w-[4%] h-[40%] bg-blue-400/70 dark:bg-blue-600/70 rounded-t-sm relative cursor-pointer group hover:bg-blue-500 dark:hover:bg-blue-700 transition-colors duration-200">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-700 dark:text-slate-300 hidden group-hover:block">Dez: 8%</span>
+<span class="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-slate-600 dark:text-slate-400">Dez</span>
+</div>
+<div class="absolute inset-0 flex items-end">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+<polyline fill="none" points="
+                    4.1,3012.4,2020.7,2529.0,3537.3,1045.6,2053.9,3062.2,1570.5,2578.8,3087.1,2095.4,35" stroke="#ef4444" stroke-width="1.5"></polyline>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6">
+<h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-500">insights</span>
+                Painel de Insights Correlacionados
+</h2>
+<p class="text-slate-600 dark:text-slate-400 mb-4 text-sm">Selecione métricas adicionais para cruzar com as tendências de frequência.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<h3 class="font-medium text-slate-800 dark:text-slate-200 mb-2">Métricas de Desempenho</h3>
+<div class="space-y-2">
+<label class="flex items-center text-slate-700 dark:text-slate-300 cursor-pointer">
+<input class="form-checkbox text-primary rounded focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="ml-2">Produtividade Média</span>
+</label>
+<label class="flex items-center text-slate-700 dark:text-slate-300 cursor-pointer">
+<input class="form-checkbox text-primary rounded focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="ml-2">Metas Atingidas</span>
+</label>
+<label class="flex items-center text-slate-700 dark:text-slate-300 cursor-pointer">
+<input class="form-checkbox text-primary rounded focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="ml-2">Qualidade do Trabalho</span>
+</label>
+</div>
+</div>
+<div>
+<h3 class="font-medium text-slate-800 dark:text-slate-200 mb-2">Métricas de Engajamento &amp; Bem-estar</h3>
+<div class="space-y-2">
+<label class="flex items-center text-slate-700 dark:text-slate-300 cursor-pointer">
+<input checked="" class="form-checkbox text-primary rounded focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="ml-2">Engajamento de Equipe</span>
+<span class="w-3 h-3 ml-2 rounded-full bg-red-500"></span>
+</label>
+<label class="flex items-center text-slate-700 dark:text-slate-300 cursor-pointer">
+<input class="form-checkbox text-primary rounded focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="ml-2">Pesquisas de Clima</span>
+</label>
+<label class="flex items-center text-slate-700 dark:text-slate-300 cursor-pointer">
+<input class="form-checkbox text-primary rounded focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="ml-2">Satisfação do Colaborador</span>
+</label>
+</div>
+</div>
+</div>
+<button class="mt-6 px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-600 transition-colors duration-200 flex items-center gap-2">
+<span class="material-symbols-outlined text-base">auto_awesome</span>
+                Gerar Insights Estratégicos
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

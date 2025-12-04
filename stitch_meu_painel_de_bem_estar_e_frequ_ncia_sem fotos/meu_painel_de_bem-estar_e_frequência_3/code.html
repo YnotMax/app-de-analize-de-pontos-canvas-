@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Acompanhamento de Tendências de Frequência</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#6B9B78", // Muted Green
+            secondary: "#A8DADC", // Soft Blue
+            accent: "#F8F5E8", // Warm Off-white
+            "background-light": "#F0F4F8", // Lighter warm gray
+            "background-dark": "#1E2B3A", // Darker slate-blue
+            "text-light": "#334155", // Slate-700
+            "text-dark": "#E2E8F0", // Slate-200
+            "card-light": "#FFFFFF", // White
+            "card-dark": "#2D3E50", // Dark slate-blue for cards
+            "absence-start": "#9ED2BE", // Soft green for Início do Expediente
+            "absence-end": "#C3E8F5", // Soft blue for Saída Antecipada
+          },
+          fontFamily: {
+            display: ["Quicksand", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1.5rem", // Larger rounded corners
+            "lg": "2rem",
+            "xl": "2.5rem",
+            "2xl": "3rem", // Even larger for asymmetric effects
+          },
+        },
+      },
+    };
+  </script>
+<style type="text/tailwindcss">
+    .material-symbols-outlined {
+      font-size: inherit;
+    }.gradient-start-absence {
+        background: linear-gradient(to right, theme('colors.absence-start') 0%, theme('colors.primary') 100%);
+    }
+    .gradient-end-absence {
+        background: linear-gradient(to right, theme('colors.absence-end') 0%, theme('colors.secondary') 100%);
+    }.recommendation-card-bg {
+        background: linear-gradient(135deg, theme('colors.accent') 0%, theme('colors.secondary') 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    .recommendation-card-bg::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        transform: rotate(-15deg);
+        z-index: 0;
+    }
+    .recommendation-card-bg::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        right: -10px;
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(10deg);
+        z-index: 0;
+    }
+  </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark antialiased">
+<div class="flex h-screen">
+<aside class="w-20 bg-primary dark:bg-background-dark p-4 flex flex-col items-center justify-between text-white dark:text-text-dark shadow-lg">
+<div class="flex flex-col items-center space-y-6">
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">home</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">favorite</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">group</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">calendar_month</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">insights</span>
+</a>
+<a class="p-2 rounded-lg bg-white/30 text-white shadow-inner" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">monitoring</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">workspace_premium</span>
+</a>
+</div>
+<div class="flex flex-col items-center space-y-6">
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-5xl mx-auto">
+<h1 class="text-4xl font-semibold text-text-light dark:text-text-dark mb-10">Detailed Trend Analyzer</h1>
+<div class="bg-card-light dark:bg-card-dark p-8 mb-10 rounded-xl shadow-lg border border-background-light dark:border-background-dark/50">
+<h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-6 flex items-center">
+<span class="material-symbols-outlined mr-3 text-secondary dark:text-primary text-3xl fill-1">bar_chart</span>
+                        Tendências de Ausência (Últimos 3 Meses)
+                    </h2>
+<div class="grid grid-cols-1 gap-6">
+<div class="flex items-center space-x-4">
+<span class="text-sm font-medium w-24 text-right text-text-light dark:text-text-dark/80">Mês 3</span>
+<div class="flex-1 bg-background-light dark:bg-card-dark rounded-full h-8 flex overflow-hidden shadow-inner">
+<div class="gradient-start-absence h-full w-[40%] flex items-center justify-center text-white text-xs font-semibold px-2 rounded-l-full">
+                                    4h
+                                </div>
+<div class="gradient-end-absence h-full w-[25%] flex items-center justify-center text-white text-xs font-semibold px-2 rounded-r-full">
+                                    2.5h
+                                </div>
+<div class="flex-1 bg-background-light dark:bg-card-dark rounded-r-full"></div>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<span class="text-sm font-medium w-24 text-right text-text-light dark:text-text-dark/80">Mês 2</span>
+<div class="flex-1 bg-background-light dark:bg-card-dark rounded-full h-8 flex overflow-hidden shadow-inner">
+<div class="gradient-start-absence h-full w-[30%] flex items-center justify-center text-white text-xs font-semibold px-2 rounded-l-full">
+                                    3h
+                                </div>
+<div class="gradient-end-absence h-full w-[15%] flex items-center justify-center text-white text-xs font-semibold px-2 rounded-r-full">
+                                    1.5h
+                                </div>
+<div class="flex-1 bg-background-light dark:bg-card-dark rounded-r-full"></div>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<span class="text-sm font-medium w-24 text-right text-text-light dark:text-text-dark/80">Mês Atual</span>
+<div class="flex-1 bg-background-light dark:bg-card-dark rounded-full h-8 flex overflow-hidden shadow-inner">
+<div class="gradient-start-absence h-full w-[50%] flex items-center justify-center text-white text-xs font-semibold px-2 rounded-l-full">
+                                    5h
+                                </div>
+<div class="gradient-end-absence h-full w-[30%] flex items-center justify-center text-white text-xs font-semibold px-2 rounded-r-full">
+                                    3h
+                                </div>
+<div class="flex-1 bg-background-light dark:bg-card-dark rounded-r-full"></div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-6 space-x-6 text-sm">
+<div class="flex items-center">
+<span class="w-4 h-4 rounded-full gradient-start-absence mr-2"></span>
+<span class="text-text-light dark:text-text-dark/80">Início do Expediente</span>
+</div>
+<div class="flex items-center">
+<span class="w-4 h-4 rounded-full gradient-end-absence mr-2"></span>
+<span class="text-text-light dark:text-text-dark/80">Saída Antecipada</span>
+</div>
+</div>
+</div>
+<h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-6 flex items-center">
+<span class="material-symbols-outlined mr-3 text-primary dark:text-secondary text-3xl fill-1">lightbulb</span>
+                    Resumo dos Insights
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-xl rounded-bl-3xl shadow-md border border-background-light dark:border-background-dark/50 hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-center mb-4">
+<div class="p-3 bg-absence-start/20 rounded-full mr-4 shadow-sm">
+<span class="material-symbols-outlined text-2xl text-absence-start fill-1">alarm_on</span>
+</div>
+<h3 class="font-bold text-lg text-text-light dark:text-text-dark">Início do Expediente</h3>
+</div>
+<p class="text-md text-text-light/80 dark:text-text-dark/80 leading-relaxed">
+                            Observamos que <strong class="text-absence-start">60%</strong> das suas ausências nos últimos 3 meses ocorreram no início do expediente. Isso pode indicar dificuldades com o primeiro turno.
+                        </p>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-xl rounded-tr-3xl shadow-md border border-background-light dark:border-background-dark/50 hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-center mb-4">
+<div class="p-3 bg-absence-end/20 rounded-full mr-4 shadow-sm">
+<span class="material-symbols-outlined text-2xl text-absence-end fill-1">schedule</span>
+</div>
+<h3 class="font-bold text-lg text-text-light dark:text-text-dark">Saída Antecipada</h3>
+</div>
+<p class="text-md text-text-light/80 dark:text-text-dark/80 leading-relaxed">
+                            Aproximadamente <strong class="text-absence-end">40%</strong> das suas ausências estão relacionadas a saídas antecipadas, sugerindo que compromissos no final do dia podem ser um fator.
+                        </p>
+</div>
+</div>
+<h2 class="text-2xl font-bold text-text-light dark:text-text-dark mb-6 flex items-center">
+<span class="material-symbols-outlined mr-3 text-secondary dark:text-primary text-3xl fill-1">self_improvement</span>
+                    Recomendação de Bem-Estar
+                </h2>
+<div class="recommendation-card-bg relative p-8 rounded-xl rounded-bl-3xl rounded-tr-2xl shadow-lg text-text-light dark:text-text-dark">
+<div class="relative z-10">
+<p class="text-lg mb-4 leading-relaxed">
+                            Considerando os picos de ausência, sugerimos explorar programas de flexibilidade de horário ou iniciar o dia com uma breve rotina de bem-estar para aumentar a disposição. Se as saídas antecipadas são por compromissos importantes, podemos buscar soluções de escalonamento.
+                        </p>
+<p class="text-md opacity-90">
+                            Lembre-se, estamos aqui para apoiar seu equilíbrio e produtividade.
+                        </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

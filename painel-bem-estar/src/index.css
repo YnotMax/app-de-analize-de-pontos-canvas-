@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Default Theme (Blue/Slate) */
+    --color-primary: 59, 130, 246;
+    --color-secondary: 100, 116, 139;
+    --color-accent: 245, 158, 11;
+    --color-background-light: 248, 250, 252;
+    --color-background-dark: 15, 23, 42;
+  }
+
+  .theme-nature {
+    /* Nature Theme (Emerald/Green) */
+    --color-primary: 16, 185, 129;
+    --color-secondary: 101, 163, 13;
+    --color-accent: 234, 179, 8;
+    --color-background-light: 240, 253, 244;
+    --color-background-dark: 2, 44, 34;
+  }
+
+  .theme-executive {
+    /* Executive Theme (Indigo/Purple) */
+    --color-primary: 99, 102, 241;
+    --color-secondary: 168, 85, 247;
+    --color-accent: 236, 72, 153;
+    --color-background-light: 245, 243, 255;
+    --color-background-dark: 30, 27, 75;
+  }
+
+  .theme-warm {
+    /* Warm Theme (Orange/Red) */
+    --color-primary: 249, 115, 22;
+    --color-secondary: 239, 68, 68;
+    --color-accent: 251, 191, 36;
+    --color-background-light: 255, 247, 237;
+    --color-background-dark: 67, 20, 7;
+  }
+}
+
+/* Custom Scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meu Painel de Bem-Estar e Frequência</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#6B9B78", // Muted Green
+            secondary: "#A8DADC", // Soft Blue
+            accent: "#F8F5E8", // Warm Off-white
+            "background-light": "#F0F4F8", // Lighter warm gray
+            "background-dark": "#1E2B3A", // Darker slate-blue
+            "text-light": "#334155", // Slate-700
+            "text-dark": "#E2E8F0", // Slate-200
+            "card-light": "#FFFFFF", // White
+            "card-dark": "#2D3E50", // Dark slate-blue for cards
+          },
+          fontFamily: {
+            display: ["Quicksand", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1.5rem", // Larger rounded corners
+            "lg": "2rem",
+            "xl": "2.5rem",
+            "2xl": "3rem", // Even larger for asymmetric effects
+          },
+        },
+      },
+    };
+  </script>
+<style type="text/tailwindcss">
+    .material-symbols-outlined {
+      font-size: inherit;
+    }
+    .welcome-card-bg {
+        background: linear-gradient(135deg, theme('colors.secondary') 0%, theme('colors.primary') 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    .welcome-card-bg::before {
+        content: '';
+        position: absolute;
+        top: -50px;
+        left: -50px;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        transform: rotate(-30deg);
+        z-index: 0;
+    }
+    .welcome-card-bg::after {
+        content: '';
+        position: absolute;
+        bottom: -30px;
+        right: -30px;
+        width: 150px;
+        height: 150px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(20deg);
+        z-index: 0;
+    }
+  </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark antialiased">
+<div class="flex h-screen">
+<aside class="w-20 bg-primary dark:bg-background-dark p-4 flex flex-col items-center justify-between text-white dark:text-text-dark shadow-lg">
+<div class="flex flex-col items-center space-y-6">
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">home</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">favorite</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">group</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">calendar_month</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">insights</span>
+</a>
+<a class="p-2 rounded-lg bg-white/30 text-white shadow-inner" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">monitoring</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">workspace_premium</span>
+</a>
+</div>
+<div class="flex flex-col items-center space-y-6">
+<a class="p-2 rounded-lg hover:bg-white/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-5xl mx-auto">
+<h1 class="text-4xl font-semibold text-text-light dark:text-text-dark mb-10">Meu Painel de Bem-estar e Frequência</h1>
+<div class="welcome-card-bg relative p-8 mb-10 rounded-xl rounded-bl-3xl rounded-tr-2xl shadow-lg text-white">
+<div class="relative z-10">
+<h2 class="text-4xl font-bold mb-4">Olá, [Nome do Colaborador]!</h2>
+<p class="text-lg mb-4 leading-relaxed">
+              Notamos um pequeno aumento de <strong class="text-accent dark:text-red-300">20%</strong> nas suas ausências este mês em relação ao anterior. Tudo bem com você?
+            </p>
+<p class="text-md opacity-90">
+              Lembre-se que sua saúde e bem-estar são prioridade. Se precisar conversar, estamos aqui.
+            </p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-lg rounded-tl-xl rounded-br-2xl shadow-md border border-background-light dark:border-background-dark/50 hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-center text-primary dark:text-secondary mb-4">
+<div class="p-3 bg-accent dark:bg-background-dark rounded-full mr-4 shadow-sm">
+<span class="material-symbols-outlined text-2xl text-primary dark:text-secondary fill-1">sentiment_neutral</span>
+</div>
+<h3 class="font-medium text-lg text-text-light dark:text-text-dark">Minha Taxa de Absenteísmo:</h3>
+</div>
+<div class="text-center">
+<p class="text-5xl font-bold text-text-light dark:text-text-dark leading-tight">4.5%</p>
+<p class="text-red-500 flex items-center justify-center text-md mt-2">
+<span class="material-symbols-outlined text-xl">arrow_upward</span>
+                20%
+              </p>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-lg rounded-tr-xl rounded-bl-2xl shadow-md border border-background-light dark:border-background-dark/50 hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-center text-primary dark:text-secondary mb-4">
+<div class="p-3 bg-accent dark:bg-background-dark rounded-full mr-4 shadow-sm">
+<span class="material-symbols-outlined text-2xl text-primary dark:text-secondary fill-1">event_note</span>
+</div>
+<h3 class="font-medium text-lg text-text-light dark:text-text-dark">Total de Faltas (Mês):</h3>
+</div>
+<div class="text-center">
+<p class="text-5xl font-bold text-text-light dark:text-text-dark leading-tight">3</p>
+<p class="text-md mt-2 opacity-80"></p>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-lg rounded-br-xl rounded-tl-2xl shadow-md border border-background-light dark:border-background-dark/50 hover:shadow-lg transition-shadow duration-300">
+<div class="flex items-center text-primary dark:text-secondary mb-4">
+<div class="p-3 bg-accent dark:bg-background-dark rounded-full mr-4 shadow-sm">
+<span class="material-symbols-outlined text-2xl text-primary dark:text-secondary fill-1">pending_actions</span>
+</div>
+<h3 class="font-medium text-lg text-text-light dark:text-text-dark">Justificativas Pendentes:</h3>
+</div>
+<div class="text-center">
+<p class="text-5xl font-bold text-text-light dark:text-text-dark leading-tight">1</p>
+<p class="text-md mt-2 opacity-80"></p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

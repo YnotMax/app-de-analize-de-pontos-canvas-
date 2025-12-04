@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Timeline de Bem-Estar do Colaborador</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4365FF",
+            "background-light": "#F8FAFC",
+            "background-dark": "#0B153A",
+            "absence-start": "#EF4444", // Red for missed start
+            "absence-lunch": "#F59E0B", // Orange for missed lunch return
+            "absence-end": "#3B82F6",    // Blue for early departure
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+          },
+        },
+      },
+    };
+  </script>
+<style type="text/tailwindcss">
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+    .material-symbols-outlined.filled {
+      font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="flex h-screen">
+<aside class="w-20 bg-[#020922] text-gray-400 flex flex-col items-center py-6">
+<div class="flex flex-col items-center justify-between h-full">
+<nav class="flex flex-col items-center space-y-6">
+<a aria-label="Home" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a aria-label="Health" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">favorite</span>
+</a>
+<a aria-label="Users" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">group</span>
+</a>
+<a aria-label="Calendar" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+</a>
+<a aria-label="Bar Chart" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+</a>
+<a aria-label="Timeline" class="p-2 rounded-lg bg-primary text-white" href="#">
+<span class="material-symbols-outlined filled">timeline</span>
+</a>
+<a aria-label="Trophy" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+</a>
+</nav>
+<a aria-label="Logout" class="p-2 rounded-lg hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-8">Timeline de Bem-Estar do Colaborador</h1>
+<p class="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl">Esta tela apresenta a evolução da frequência do colaborador ao longo do tempo, permitindo identificar padrões de presença e ausência, destacando momentos críticos e oferecendo insights relevantes para apoiar decisões de gestão e acompanhamento.</p>
+<div class="bg-white dark:bg-[#020922] p-6 rounded-lg shadow-md">
+<h2 class="text-xl font-semibold text-gray-700 dark:text-white mb-6">Momentos de Ausência (Últimos 3 Meses)</h2>
+<div class="relative overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800">
+<div class="relative flex items-start py-8 min-w-[1000px] xl:min-w-[1200px] border-b-2 border-dashed border-gray-300 dark:border-gray-700">
+<div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-0.5 bg-gray-300 dark:bg-gray-700"></div>
+<div class="flex justify-between w-full text-gray-500 dark:text-gray-400 text-sm absolute top-0 left-0 right-0 px-4">
+<span class="text-left">Maio '24</span>
+<span class="text-center">Junho '24</span>
+<span class="text-right">Julho '24</span>
+</div>
+<div class="flex justify-around w-full relative z-10 pt-4">
+<div class="relative flex flex-col items-center justify-center w-1/3">
+<div class="absolute -top-6 text-xs font-medium text-gray-600 dark:text-gray-300">03/Mai</div>
+<div class="relative group cursor-pointer">
+<span class="material-symbols-outlined filled text-absence-start dark:text-red-400 text-3xl">sentiment_dissatisfied</span>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max p-2 text-xs text-white bg-gray-800 dark:bg-gray-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+Início do Expediente: 09:15
+</div>
+</div>
+</div>
+<div class="relative flex flex-col items-center justify-center w-1/3">
+<div class="absolute -top-6 text-xs font-medium text-gray-600 dark:text-gray-300">10/Mai</div>
+<div class="relative group cursor-pointer">
+<span class="material-symbols-outlined filled text-absence-lunch dark:text-yellow-500 text-3xl">timer_off</span>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max p-2 text-xs text-white bg-gray-800 dark:bg-gray-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none volta-do-almoco-tooltip">
+Volta do Almoço: 14:30
+</div>
+</div>
+</div>
+<div class="relative flex flex-col items-center justify-center w-1/3">
+<div class="absolute -top-6 text-xs font-medium text-gray-600 dark:text-gray-300">18/Mai</div>
+<div class="relative group cursor-pointer">
+<span class="material-symbols-outlined filled text-absence-end dark:text-blue-400 text-3xl">directions_run</span>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max p-2 text-xs text-white bg-gray-800 dark:bg-gray-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+Saída Antecipada: 16:00
+</div>
+</div>
+</div>
+<div class="relative flex flex-col items-center justify-center w-1/3">
+<div class="absolute -top-6 text-xs font-medium text-gray-600 dark:text-gray-300">05/Jun</div>
+<div class="relative group cursor-pointer">
+<span class="material-symbols-outlined filled text-absence-lunch dark:text-yellow-500 text-3xl">timer_off</span>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max p-2 text-xs text-white bg-gray-800 dark:bg-gray-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none volta-do-almoco-tooltip">
+Volta do Almoço: 14:15
+</div>
+</div>
+</div>
+<div class="relative flex flex-col items-center justify-center w-1/3">
+<div class="absolute -top-6 text-xs font-medium text-gray-600 dark:text-gray-300">12/Jun</div>
+<div class="relative group cursor-pointer">
+<span class="material-symbols-outlined filled text-absence-start dark:text-red-400 text-3xl">sentiment_dissatisfied</span>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max p-2 text-xs text-white bg-gray-800 dark:bg-gray-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+Início do Expediente: 09:30
+</div>
+</div>
+</div>
+<div class="relative flex flex-col items-center justify-center w-1/3">
+<div class="absolute -top-6 text-xs font-medium text-gray-600 dark:text-gray-300">20/Jun</div>
+<div class="relative group cursor-pointer">
+<span class="material-symbols-outlined filled text-absence-lunch dark:text-yellow-500 text-3xl">timer_off</span>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max p-2 text-xs text-white bg-gray-800 dark:bg-gray-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none volta-do-almoco-tooltip">
+Volta do Almoço: 14:45
+</div>
+</div>
+</div>
+<div class="relative flex flex-col items-center justify-center w-1/3">
+<div class="absolute -top-6 text-xs font-medium text-gray-600 dark:text-gray-300">01/Jul</div>
+<div class="relative group cursor-pointer">
+<span class="material-symbols-outlined filled text-absence-end dark:text-blue-400 text-3xl">directions_run</span>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max p-2 text-xs text-white bg-gray-800 dark:bg-gray-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+Saída Antecipada: 16:30
+</div>
+</div>
+</div>
+<div class="relative flex flex-col items-center justify-center w-1/3">
+<div class="absolute -top-6 text-xs font-medium text-gray-600 dark:text-gray-300">08/Jul</div>
+<div class="relative group cursor-pointer">
+<span class="material-symbols-outlined filled text-absence-lunch dark:text-yellow-500 text-3xl">timer_off</span>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max p-2 text-xs text-white bg-gray-800 dark:bg-gray-700 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none volta-do-almoco-tooltip">
+Volta do Almoço: 14:05
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center space-x-6 text-sm text-gray-600 dark:text-gray-300">
+<div class="flex items-center">
+<span class="material-symbols-outlined filled text-absence-start dark:text-red-400 text-xl mr-2">sentiment_dissatisfied</span> Início do Expediente
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined filled text-absence-lunch dark:text-yellow-500 text-xl mr-2">timer_off</span> Volta do Almoço
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined filled text-absence-end dark:text-blue-400 text-xl mr-2">directions_run</span> Saída Antecipada
+</div>
+</div>
+</div>
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden p-4 rounded-lg bg-blue-50 dark:bg-gradient-to-r dark:from-sky-900/40 dark:to-cyan-900/40 border border-blue-200 dark:border-cyan-700/50 max-w-sm text-sm z-50 shadow-xl pointer-events-none" id="dica-overlay">
+<div class="flex items-start">
+<div class="mr-4">
+<div class="bg-yellow-100 dark:bg-yellow-400/20 p-2 rounded-full">
+<span class="material-symbols-outlined text-yellow-500 dark:text-yellow-300">lightbulb</span>
+</div>
+</div>
+<div>
+<h3 class="font-bold text-blue-800 dark:text-blue-100">Dica:</h3>
+<p class="text-blue-700 dark:text-blue-200">
+              Percebemos que metade das suas ausências ocorrem após o intervalo de almoço. Que tal tentar uma pausa mais revigorante ou conversar com seu gestor sobre flexibilidade? Cuidar da energia é fundamental!
+            </p>
+</div>
+</div>
+</div>
+</div>
+</div></main>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const voltaDoAlmocoTooltips = document.querySelectorAll('.volta-do-almoco-tooltip');
+        const dicaOverlay = document.getElementById('dica-overlay');
+        voltaDoAlmocoTooltips.forEach(tooltip => {
+            let timeout;
+            tooltip.parentNode.addEventListener('mouseenter', () => {
+                clearTimeout(timeout); // Clear any pending hide
+                dicaOverlay.classList.remove('hidden');
+                // Position the dicaOverlay (optional, fixed in center for simplicity)
+                // If specific positioning relative to the hovered element is needed,
+                // more complex JS would be required here. For a YOLO approach, central fixed is fine.
+            });
+            tooltip.parentNode.addEventListener('mouseleave', () => {
+                // Delay hiding to allow for quick re-hover without flicker
+                timeout = setTimeout(() => {
+                    dicaOverlay.classList.add('hidden');
+                }, 300); // 300ms delay
+            });
+            // Prevent dicaOverlay from disappearing if mouse enters the dica itself
+            dicaOverlay.addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+            });
+            dicaOverlay.addEventListener('mouseleave', () => {
+                timeout = setTimeout(() => {
+                    dicaOverlay.classList.add('hidden');
+                }, 300);
+            });
+        });
+    });
+</script>
+</body></html>

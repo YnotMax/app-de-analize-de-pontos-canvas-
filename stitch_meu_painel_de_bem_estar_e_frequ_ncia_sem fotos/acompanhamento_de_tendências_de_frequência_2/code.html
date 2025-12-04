@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HR Analyst's Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4F46E5",
+            "background-light": "#F8FAFC",
+            "background-dark": "#0B1120",
+          },
+          fontFamily: {
+            display: ["Poppins", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.75rem", // 12px
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex h-screen">
+<aside class="bg-indigo-950 dark:bg-[#030712] text-slate-300 flex flex-col items-center justify-between w-20 py-6">
+<div class="flex flex-col items-center space-y-8">
+<a class="mb-6" href="#">
+<svg fill="none" height="32" viewBox="0 0 36 31" width="32" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.6549 2.45731C21.0478 0.165405 24.0322 0.993084 24.5268 3.51863L26.273 12.0165C26.4716 13.0118 27.3482 13.7259 28.3753 13.7259H33.5186C36.1983 13.7259 37.1084 17.0211 34.928 18.4239L27.9351 22.9972C27.1166 23.5358 26.7584 24.524 27.0851 25.4326L29.4346 32.1939C30.1384 34.3323 27.6094 36.1517 25.7176 34.9254L18.8042 30.3957C17.9943 29.8623 16.9257 29.8623 16.1158 30.3957L9.20241 34.9254C7.31057 36.1517 4.78161 34.3323 5.48541 32.1939L7.8349 25.4326C8.16162 24.524 7.80337 23.5358 6.98487 22.9972L0 18.4239C-2.17961 17.0211 -1.26949 13.7259 1.41021 13.7259H6.5535C7.58064 13.7259 8.4572 13.0118 8.65582 12.0165L10.402 3.51863C10.8966 0.993083 13.881 -0.165406 15.2739 2.45731L17.56 6.37255C18.1503 7.35902 19.5541 7.31498 20.089 6.29412L19.6549 2.45731Z" fill="url(#paint0_linear_1_2)" transform="translate(0.5, -1)"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_1_2" x1="17.9643" x2="17.9643" y1="-0.999999" y2="35">
+<stop stop-color="#3B82F6"></stop>
+<stop offset="1" stop-color="#1D4ED8"></stop>
+</linearGradient>
+</defs>
+</svg>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">favorite</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+</a>
+<a class="bg-primary text-white p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+</a>
+</div>
+<div class="flex flex-col items-center space-y-6">
+<div class="w-full border-t border-white/10"></div>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 p-8 md:p-12 overflow-y-auto">
+<h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-8">HR Analyst's Command Center</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg lg:col-span-2">
+<h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Overall Absence Rate (Monthly Trend)</h2>
+<div class="h-48 flex items-end justify-between border-b border-gray-200 dark:border-gray-700 pb-4 text-sm text-gray-500 dark:text-gray-400">
+<div class="flex flex-col items-center">
+<div class="w-8 h-20 bg-emerald-500/80 rounded-t-lg relative group">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-800 dark:text-white hidden group-hover:block bg-gray-200 dark:bg-gray-700 py-1 px-2 rounded-md">3.5%</span>
+</div>
+<span class="mt-2">Jan</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-24 bg-emerald-500/80 rounded-t-lg relative group">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-800 dark:text-white hidden group-hover:block bg-gray-200 dark:bg-gray-700 py-1 px-2 rounded-md">4.2%</span>
+</div>
+<span class="mt-2">Feb</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-20 bg-emerald-500/80 rounded-t-lg relative group">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-800 dark:text-white hidden group-hover:block bg-gray-200 dark:bg-gray-700 py-1 px-2 rounded-md">3.8%</span>
+</div>
+<span class="mt-2">Mar</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-28 bg-red-500/80 rounded-t-lg relative group">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-800 dark:text-white hidden group-hover:block bg-gray-200 dark:bg-gray-700 py-1 px-2 rounded-md">5.1%</span>
+</div>
+<span class="mt-2">Apr</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-24 bg-emerald-500/80 rounded-t-lg relative group">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-800 dark:text-white hidden group-hover:block bg-gray-200 dark:bg-gray-700 py-1 px-2 rounded-md">4.5%</span>
+</div>
+<span class="mt-2">May</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-20 bg-emerald-500/80 rounded-t-lg relative group">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-800 dark:text-white hidden group-hover:block bg-gray-200 dark:bg-gray-700 py-1 px-2 rounded-md">3.9%</span>
+</div>
+<span class="mt-2">Jun</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-28 bg-red-500/80 rounded-t-lg relative group">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-800 dark:text-white hidden group-hover:block bg-gray-200 dark:bg-gray-700 py-1 px-2 rounded-md">5.3%</span>
+</div>
+<span class="mt-2">Jul</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-32 bg-red-500/80 rounded-t-lg relative group">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-800 dark:text-white hidden group-hover:block bg-gray-200 dark:bg-gray-700 py-1 px-2 rounded-md">5.8%</span>
+</div>
+<span class="mt-2">Aug</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg lg:col-span-2">
+<h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Breakdown by Absence Reason (Past Quarter)</h2>
+<div class="space-y-4">
+<div class="flex items-center">
+<div class="w-4 h-4 rounded-full bg-indigo-500 mr-3"></div>
+<div class="flex-1 text-gray-700 dark:text-gray-300">Doença (Própria)</div>
+<div class="font-semibold text-gray-800 dark:text-white">35%</div>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 rounded-full bg-blue-500 mr-3"></div>
+<div class="flex-1 text-gray-700 dark:text-gray-300">Consulta Médica</div>
+<div class="font-semibold text-gray-800 dark:text-white">25%</div>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 rounded-full bg-cyan-500 mr-3"></div>
+<div class="flex-1 text-gray-700 dark:text-gray-300">Compromisso Pessoal</div>
+<div class="font-semibold text-gray-800 dark:text-white">20%</div>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 rounded-full bg-purple-500 mr-3"></div>
+<div class="flex-1 text-gray-700 dark:text-gray-300">Emergência Familiar</div>
+<div class="font-semibold text-gray-800 dark:text-white">10%</div>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 rounded-full bg-pink-500 mr-3"></div>
+<div class="flex-1 text-gray-700 dark:text-gray-300">Outros</div>
+<div class="font-semibold text-gray-800 dark:text-white">10%</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg md:col-span-2 xl:col-span-2">
+<h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Absence Moments (Past Quarter)</h2>
+<div class="flex items-end justify-around h-60 border-b border-gray-200 dark:border-gray-700 pb-4">
+<div class="flex flex-col items-center w-1/4">
+<div class="w-2/3 h-[35%] bg-primary rounded-t-lg"></div>
+<span class="text-sm text-gray-500 dark:text-gray-400 mt-2">Início Exp.</span>
+</div>
+<div class="flex flex-col items-center w-1/4">
+<div class="relative w-2/3 h-[70%] bg-primary rounded-t-lg">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white text-xs font-semibold py-1 px-2 rounded">
+            50%
+          </div>
+</div>
+<span class="text-sm text-gray-500 dark:text-gray-400 mt-2">Volta Almoço</span>
+</div>
+<div class="flex flex-col items-center w-1/4">
+<div class="w-2/3 h-[30%] bg-primary rounded-t-lg"></div>
+<span class="text-sm text-gray-500 dark:text-gray-400 mt-2">Saída Ant.</span>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/40 dark:to-cyan-950/40 p-6 rounded-lg shadow-lg lg:col-span-full xl:col-span-2">
+<div class="flex items-start space-x-4 mb-4">
+<div class="bg-yellow-100 dark:bg-yellow-400/20 p-2 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined text-yellow-500 dark:text-yellow-300 !text-2xl" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<div>
+<h3 class="font-bold text-xl text-gray-800 dark:text-gray-100">Actionable Insights</h3>
+<p class="text-gray-600 dark:text-gray-300 mt-1">Personalized recommendations to improve team well-being and productivity.</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-blue-200 dark:border-blue-800/50 shadow-sm">
+<h4 class="font-semibold text-lg text-gray-800 dark:text-white flex items-center mb-2">
+<span class="material-symbols-outlined text-blue-500 mr-2">group</span>
+          Team 'Desenvolvimento'
+        </h4>
+<p class="text-gray-700 dark:text-gray-300">
+          Increased absence post-lunch detected. Consider implementing a 15-minute 'mindfulness break' or encouraging team walks to re-energize. Review lunch break flexibility.
+        </p>
+<button class="mt-3 text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 flex items-center">
+<span class="material-symbols-outlined !text-base mr-1">arrow_right_alt</span> View detailed report
+        </button>
+</div>
+<div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-green-200 dark:border-green-800/50 shadow-sm">
+<h4 class="font-semibold text-lg text-gray-800 dark:text-white flex items-center mb-2">
+<span class="material-symbols-outlined text-green-500 mr-2">person</span>
+          Individual: Ana P. (Marketing)
+        </h4>
+<p class="text-gray-700 dark:text-gray-300">
+          Frequent short-term absences due to 'personal commitments'. A confidential check-in could uncover underlying issues or provide access to support resources.
+        </p>
+<button class="mt-3 text-sm font-medium text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-200 flex items-center">
+<span class="material-symbols-outlined !text-base mr-1">arrow_right_alt</span> Suggest support path
+        </button>
+</div>
+<div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-purple-200 dark:border-purple-800/50 shadow-sm">
+<h4 class="font-semibold text-lg text-gray-800 dark:text-white flex items-center mb-2">
+<span class="material-symbols-outlined text-purple-500 mr-2">corporate_fare</span>
+          Organizational Trend
+        </h4>
+<p class="text-gray-700 dark:text-gray-300">
+          Overall absence rate shows a 15% increase in the last quarter compared to the previous year. Consider a company-wide well-being survey to identify broader stressors.
+        </p>
+<button class="mt-3 text-sm font-medium text-purple-600 hover:text-purple-800 dark:text-purple-400 dark:hover:text-purple-200 flex items-center">
+<span class="material-symbols-outlined !text-base mr-1">arrow_right_alt</span> Plan survey
+        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

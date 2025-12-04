@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Predictive HR Risk Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4365FF", // Original primary blue
+            "accent-green": "#10B981", // Low risk, positive trends
+            "accent-yellow": "#FBBF24", // Moderate risk, warnings
+            "accent-red": "#EF4444",   // High risk, critical alerts
+            "background-light": "#F0F4F8", // Lighter background
+            "background-dark": "#0B153A", // Main dark background
+            "panel-dark": "#162045",      // Darker panel background
+            "border-dark": "#2A375A",     // Dark border
+            "text-dark-light": "#E0E7FF", // Light text on dark backgrounds
+            "text-dark-muted": "#9CA3AF", // Muted text on dark backgrounds
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+            lg: "0.75rem",
+          },
+          boxShadow: {
+            'card-dark': '0 4px 12px rgba(0, 0, 0, 0.4)',
+          }
+        },
+      },
+    };
+  </script>
+<style type="text/tailwindcss">
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+    .panel {
+      @apply bg-panel-dark p-6 rounded-lg shadow-card-dark border border-border-dark;
+    }
+    .text-gradient-blue {
+      @apply bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text;
+    }
+    .text-gradient-red {
+      @apply bg-gradient-to-r from-red-400 to-red-600 text-transparent bg-clip-text;
+    }
+    .heatmap-cell {
+      @apply w-5 h-5 rounded-sm flex items-center justify-center text-xs text-background-dark font-medium;
+    }
+    .risk-low { @apply bg-accent-green text-background-dark; }
+    .risk-medium { @apply bg-accent-yellow text-background-dark; }
+    .risk-high { @apply bg-accent-red text-white; }
+    .risk-neutral { @apply bg-gray-700 text-text-dark-muted; }
+    .risk-cell { @apply px-3 py-2 text-sm; }
+    .intervention-category-health { @apply bg-blue-500/20 text-blue-300; }
+    .intervention-category-wellbeing { @apply bg-purple-500/20 text-purple-300; }
+    .intervention-category-workload { @apply bg-orange-500/20 text-orange-300; }
+    .intervention-category-engagement { @apply bg-green-500/20 text-green-300; }
+    .intervention-category-performance { @apply bg-red-500/20 text-red-300; }
+  </style>
+</head>
+<body class="font-display bg-background-dark text-text-dark-light antialiased">
+<div class="flex h-screen">
+<aside class="w-20 bg-[#020922] text-gray-400 flex flex-col items-center py-6 border-r border-border-dark">
+<div class="flex flex-col items-center justify-between h-full">
+<nav class="flex flex-col items-center space-y-6">
+<a aria-label="Home" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a aria-label="Health" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">favorite</span>
+</a>
+<a aria-label="Users" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+</a>
+<a aria-label="Calendar" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+</a>
+<a aria-label="Bar Chart" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+</a>
+<a aria-label="Timeline" class="p-2 rounded-lg bg-primary text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">timeline</span>
+</a>
+<a aria-label="Trophy" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+</a>
+</nav>
+<a aria-label="Logout" class="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<h1 class="text-4xl font-extrabold mb-4 text-gradient-blue">Predictive HR Risk Dashboard</h1>
+<p class="text-lg text-text-dark-muted mb-8 max-w-2xl">
+            Proactive management of employee well-being and productivity through predictive risk assessment and tailored intervention strategies.
+</p>
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+<div class="lg:col-span-3 panel">
+<h2 class="text-xl font-semibold mb-6 text-text-dark-light">Employee Risk Scorecard</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left table-auto">
+<thead>
+<tr class="border-b border-border-dark text-text-dark-muted uppercase text-xs font-semibold tracking-wider">
+<th class="py-3 pr-2">Employee</th>
+<th class="py-3 px-2">Role</th>
+<th class="py-3 px-2 text-center">Absence Risk</th>
+<th class="py-3 px-2 text-center">Burnout Risk</th>
+<th class="py-3 px-2 text-center">Flight Risk</th>
+<th class="py-3 pl-2 text-center">Overall Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-border-dark hover:bg-white/5 transition-colors duration-200 cursor-pointer">
+<td class="py-4 pr-2 flex items-center">
+<img alt="Profile picture of John Smith" class="w-8 h-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzrj1Pvn8tIqAn23c2B7KgPS7VVEFKNIIxJAFPqgltQRwFP_XQQnPqMZEcqFNWahwZmT6-Vmnz2Lf57QavD1YVfu8FEuXI46whyVP457VVJrmsdsI0a8rnzmjcbQj4tQ9s9SG7mvx6E42HwkWPxnQNWZDLv8Vnmmdtkz_OD-L9RizXP4iKN3u7vfe9Lh6IQGEXLQO4q0rN96WrWmh2ATqMRYNToh5kZubodIQMohQkZTpU3Kr0Tb20RH8lkDKFiWJBLlfpEq3eVgE"/>
+<div class="flex flex-col">
+<span class="font-medium text-text-dark-light">John Smith</span>
+<span class="text-xs text-text-dark-muted">john.smith@example.com</span>
+</div>
+</td>
+<td class="risk-cell text-text-dark-muted">Software Engineer</td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-red/20 text-accent-red">High</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-yellow/20 text-accent-yellow">Medium</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-green/20 text-accent-green">Low</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-3 py-1 font-bold text-lg text-accent-red bg-red-800/20 border border-accent-red">8.2</span></td>
+</tr>
+<tr class="border-b border-border-dark hover:bg-white/5 transition-colors duration-200 cursor-pointer">
+<td class="py-4 pr-2 flex items-center">
+<img alt="Profile picture of Jane Doe" class="w-8 h-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT0BX_lX-Kpap1l__QndaRzSPTbINqcMC0kFufPpUmNoIbhlV0s9Q3w_tZHPUBdR13HjdYP0CjPoBkUquznrsL6AQDM104yU20XV-v7lZAwCIFmWeIXybCOYRfogR0fEPCp1a81Ki4y2HUsuWvV7e31eLELPLA6i0M-j3AqVJ_h9vUkkGHKbBu2aHGYo2WASfG55v0OMNkSh-S7b8inKu8xViA-4iTWCqW63QP_1HhHA1rk1TVII2WRqGPGB4f2-aC1IHbLMOtBwY"/>
+<div class="flex flex-col">
+<span class="font-medium text-text-dark-light">Jane Doe</span>
+<span class="text-xs text-text-dark-muted">jane.doe@example.com</span>
+</div>
+</td>
+<td class="risk-cell text-text-dark-muted">Product Manager</td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-yellow/20 text-accent-yellow">Medium</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-yellow/20 text-accent-yellow">Medium</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-yellow/20 text-accent-yellow">Medium</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-3 py-1 font-bold text-lg text-accent-yellow bg-yellow-800/20 border border-accent-yellow">6.5</span></td>
+</tr>
+<tr class="border-b border-border-dark hover:bg-white/5 transition-colors duration-200 cursor-pointer">
+<td class="py-4 pr-2 flex items-center">
+<img alt="Profile picture of Maria Silva" class="w-8 h-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1h9JNydO-UaZXxnnLRSqHFHHFaW3fWVRCXsJIT4_IqADjb8Jq3J0A98dihIhF3abqcaWgF3_GgmaM9Bi5f3zeW_rtAIr277TGAb-nD1fIQuo5PIR4n-_1xgyoGa3JgXWAKIdoNotDwOSxG1G-al9rBzsKQRf333s0Gcg2o6QXq5ACn1jvdYpXmNvQ9IBD6drIPYjsjPFMMtc8NqViXgdpAEZD68afs_ip1YJMx8QA6YZl28wfmWPHGMzdwq2ImE__SdzvZUrtank"/>
+<div class="flex flex-col">
+<span class="font-medium text-text-dark-light">Maria Silva</span>
+<span class="text-xs text-text-dark-muted">maria.silva@example.com</span>
+</div>
+</td>
+<td class="risk-cell text-text-dark-muted">UX Designer</td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-green/20 text-accent-green">Low</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-green/20 text-accent-green">Low</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-yellow/20 text-accent-yellow">Medium</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-3 py-1 font-bold text-lg text-accent-yellow bg-yellow-800/20 border border-accent-yellow">5.1</span></td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors duration-200 cursor-pointer">
+<td class="py-4 pr-2 flex items-center">
+<img alt="Profile picture of Pedro Costa" class="w-8 h-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgFIglFnG8km0LFbvqNtM5IgqVdctCrVjzh5lH457c4z7EKhwV6PbnJVdfaLZPk03rdS_8nKqKRfDjA4BlNdMeNvlYJGIEXKHfW9LzIpZBAGJSNlhWvnnbHlGiiTAPMvqU8IjPmcccj1emPPJ9hkTjF1Env-enjF26khk1WNSgZ2IyNLwbfuqbfLkSX909_Ex1nTdKPC9e3fc03WvwpJg2ulo7pJnBTBKMEUMuiB86_SLunJw9N1ljdmQZ9PX43Ec4zOYOvl3ltwQ"/>
+<div class="flex flex-col">
+<span class="font-medium text-text-dark-light">Pedro Costa</span>
+<span class="text-xs text-text-dark-muted">pedro.costa@example.com</span>
+</div>
+</td>
+<td class="risk-cell text-text-dark-muted">Data Scientist</td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-green/20 text-accent-green">Low</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-green/20 text-accent-green">Low</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-accent-green/20 text-accent-green">Low</span></td>
+<td class="risk-cell text-center"><span class="inline-flex items-center rounded-full px-3 py-1 font-bold text-lg text-accent-green bg-green-800/20 border border-accent-green">2.7</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-8">
+<h3 class="text-lg font-medium mb-4 text-text-dark-light">Risk Score Legend:</h3>
+<div class="grid grid-cols-3 gap-y-2 gap-x-4 text-sm text-text-dark-muted">
+<div class="flex items-center">
+<span class="w-4 h-4 rounded-full bg-accent-red mr-2"></span>
+<span>High Risk (7.0 - 10.0)</span>
+</div>
+<div class="flex items-center">
+<span class="w-4 h-4 rounded-full bg-accent-yellow mr-2"></span>
+<span>Medium Risk (4.0 - 6.9)</span>
+</div>
+<div class="flex items-center">
+<span class="w-4 h-4 rounded-full bg-accent-green mr-2"></span>
+<span>Low Risk (0.0 - 3.9)</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 flex flex-col space-y-8">
+<div class="panel flex-1 flex flex-col">
+<h2 class="text-xl font-semibold mb-4 text-text-dark-light">Intervention Strategies for John Smith</h2>
+<p class="text-sm text-text-dark-muted mb-6">Based on John's risk profile (High Absence, Medium Burnout, Low Flight Risk) and past patterns.</p>
+<div class="space-y-4 mb-6">
+<div class="flex items-center gap-3 intervention-category-health p-3 rounded-md">
+<span class="material-symbols-outlined text-2xl">medical_services</span>
+<div>
+<h3 class="font-semibold text-lg">Health Support</h3>
+<p class="text-sm">Recommend a confidential health check-up and access to our digital well-being platform.</p>
+</div>
+</div>
+<div class="flex items-center gap-3 intervention-category-workload p-3 rounded-md">
+<span class="material-symbols-outlined text-2xl">speed</span>
+<div>
+<h3 class="font-semibold text-lg">Workload Review</h3>
+<p class="text-sm">Schedule a meeting with John and his manager to review current projects and potential re-prioritization.</p>
+</div>
+</div>
+<div class="flex items-center gap-3 intervention-category-wellbeing p-3 rounded-md">
+<span class="material-symbols-outlined text-2xl">spa</span>
+<div>
+<h3 class="font-semibold text-lg">Well-being Coaching</h3>
+<p class="text-sm">Offer one-on-one sessions with a stress management coach to develop coping strategies.</p>
+</div>
+</div>
+<div class="flex items-center gap-3 intervention-category-engagement p-3 rounded-md">
+<span class="material-symbols-outlined text-2xl">groups</span>
+<div>
+<h3 class="font-semibold text-lg">Team Engagement</h3>
+<p class="text-sm">Encourage participation in team-building activities or a new internal project he might find engaging.</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-border-dark">
+<div class="flex items-center mb-4">
+<div class="bg-primary/20 p-2 rounded-full mr-3">
+<span class="material-symbols-outlined text-primary text-2xl">insights</span>
+</div>
+<h3 class="font-bold text-lg text-text-dark-light">Key Insights for John:</h3>
+</div>
+<ul class="list-disc list-inside space-y-2 text-text-dark-muted ml-2">
+<li>
+<span class="text-blue-200">His absence risk spiked after the last major project deadline.</span>
+</li>
+<li>
+<span class="text-red-200">Burnout risk factors include long working hours and few breaks, especially on Mondays.</span>
+</li>
+<li>
+<span class="text-green-200">High engagement in mentoring new hires, consider formalizing this role for motivation.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

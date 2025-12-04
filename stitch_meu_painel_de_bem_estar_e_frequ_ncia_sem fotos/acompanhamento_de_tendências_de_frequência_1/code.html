@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meu Scorecard de Frequência Pessoal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4F46E5",
+            "background-light": "#F8FAFC",
+            "background-dark": "#0B1120",
+          },
+          fontFamily: {
+            display: ["Poppins", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.75rem", // 12px
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex h-screen">
+<aside class="bg-indigo-950 dark:bg-[#030712] text-slate-300 flex flex-col items-center justify-between w-20 py-6">
+<div class="flex flex-col items-center space-y-8">
+<a class="mb-6" href="#">
+<svg fill="none" height="32" viewBox="0 0 36 31" width="32" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.6549 2.45731C21.0478 0.165405 24.0322 0.993084 24.5268 3.51863L26.273 12.0165C26.4716 13.0118 27.3482 13.7259 28.3753 13.7259H33.5186C36.1983 13.7259 37.1084 17.0211 34.928 18.4239L27.9351 22.9972C27.1166 23.5358 26.7584 24.524 27.0851 25.4326L29.4346 32.1939C30.1384 34.3323 27.6094 36.1517 25.7176 34.9254L18.8042 30.3957C17.9943 29.8623 16.9257 29.8623 16.1158 30.3957L9.20241 34.9254C7.31057 36.1517 4.78161 34.3323 5.48541 32.1939L7.8349 25.4326C8.16162 24.524 7.80337 23.5358 6.98487 22.9972L0 18.4239C-2.17961 17.0211 -1.26949 13.7259 1.41021 13.7259H6.5535C7.58064 13.7259 8.4572 13.0118 8.65582 12.0165L10.402 3.51863C10.8966 0.993083 13.881 -0.165406 15.2739 2.45731L17.56 6.37255C18.1503 7.35902 19.5541 7.31498 20.089 6.29412L19.6549 2.45731Z" fill="url(#paint0_linear_1_2)" transform="translate(0.5, -1)"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_1_2" x1="17.9643" x2="17.9643" y1="-0.999999" y2="35">
+<stop stop-color="#3B82F6"></stop>
+<stop offset="1" stop-color="#1D4ED8"></stop>
+</linearGradient>
+</defs>
+</svg>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">favorite</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+</a>
+<a class="bg-primary text-white p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</a>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+</a>
+</div>
+<div class="flex flex-col items-center space-y-6">
+<div class="w-full border-t border-white/10"></div>
+<a class="p-2 rounded-lg hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 p-8 md:p-12 overflow-y-auto">
+<h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-8">Meu Scorecard de Frequência Pessoal</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg flex flex-col items-center justify-center text-center">
+<div class="p-4 bg-green-100 dark:bg-green-700/30 rounded-full mb-4">
+<span class="material-symbols-outlined text-green-600 dark:text-green-300 !text-5xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Sequência Semanal Ativa</h2>
+<p class="text-5xl font-bold text-primary dark:text-blue-400">8</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Semanas consecutivas sem atrasos ou faltas!</p>
+</div>
+<div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+<h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-6">Meus Momentos de Ausência (Últimos 3 Meses)</h2>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Pontos que podemos melhorar para aumentar sua presença:</p>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+<div class="flex flex-col items-center text-center p-3 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700/20">
+<div class="relative w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-300 !text-3xl" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="absolute top-0 right-0 h-5 w-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">2</span>
+</div>
+<span class="text-sm font-medium text-gray-700 dark:text-gray-200">Início do Expediente</span>
+</div>
+<div class="flex flex-col items-center text-center p-3 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700/20">
+<div class="relative w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-300 !text-3xl" style="font-variation-settings: 'FILL' 1;">lunch_dining</span>
+<span class="absolute top-0 right-0 h-5 w-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">5</span>
+</div>
+<span class="text-sm font-medium text-gray-700 dark:text-gray-200">Volta do Almoço</span>
+</div>
+<div class="flex flex-col items-center text-center p-3 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700/20">
+<div class="relative w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-300 !text-3xl" style="font-variation-settings: 'FILL' 1;">exit_to_app</span>
+<span class="absolute top-0 right-0 h-5 w-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">1</span>
+</div>
+<span class="text-sm font-medium text-gray-700 dark:text-gray-200">Saída Antecipada</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-r from-blue-100 to-cyan-100 dark:from-blue-900/50 dark:to-cyan-900/50 p-6 rounded-lg border border-blue-200 dark:border-blue-800/50 shadow-sm">
+<div class="flex items-start space-x-4">
+<div class="bg-yellow-200 dark:bg-yellow-400/20 p-2 rounded-full">
+<span class="material-symbols-outlined text-yellow-500 dark:text-yellow-300 !text-2xl" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">Dica de Bem-Estar &amp; Produtividade do Dia:</h3>
+<p class="text-gray-600 dark:text-gray-300 mt-1">
+                Para aumentar sua energia e foco após o almoço, tente fazer uma pequena caminhada ou alongamento por 10 minutos. Isso pode reduzir o cansaço e melhorar sua disposição!
+            </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
