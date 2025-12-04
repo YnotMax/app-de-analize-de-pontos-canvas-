@@ -42,11 +42,11 @@ const IndividualTrends: React.FC = () => {
                         <div className="w-full h-80 bg-slate-50 dark:bg-slate-800 rounded-lg flex items-end justify-around p-4 gap-1 relative">
                             {/* Mock bars */}
                             {Array.from({ length: 30 }).map((_, i) => {
-                                const height = Math.floor(Math.random() * 60) + 20 + '%';
-                                const type = Math.random();
+                                const height = ((i * 7) % 60) + 20 + '%';
+                                const type = (i * 3) % 10;
                                 let color = 'bg-blue-500';
-                                if (type > 0.8) color = 'bg-red-500';
-                                else if (type > 0.7) color = 'bg-amber-500';
+                                if (type > 8) color = 'bg-red-500';
+                                else if (type > 7) color = 'bg-amber-500';
 
                                 return (
                                     <div key={i} className={`w-full max-w-[20px] ${color} rounded-t-sm hover:opacity-80 transition-opacity cursor-pointer`} style={{ height }}></div>

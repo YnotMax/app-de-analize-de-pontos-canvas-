@@ -249,8 +249,8 @@ const TeamDetailedView: React.FC = () => {
                                         </div>
                                         <div className="flex flex-col items-center">
                                             <span>Produtividade:</span>
-                                            <span className={`${Math.random() > 0.5 ? 'text-green-500' : 'text-orange-500'} font-semibold`}>
-                                                {Math.random() > 0.5 ? '+' : '-'} {Math.floor(Math.random() * 15) + 5}%
+                                            <span className={`${(emp.id.length % 2 === 0) ? 'text-green-500' : 'text-orange-500'} font-semibold`}>
+                                                {(emp.id.length % 2 === 0) ? '+' : '-'} {(emp.id.length * 2) + 5}%
                                             </span>
                                         </div>
                                     </div>

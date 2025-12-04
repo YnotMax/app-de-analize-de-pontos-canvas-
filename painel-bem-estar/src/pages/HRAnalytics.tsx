@@ -9,9 +9,10 @@ const HRAnalytics: React.FC = () => {
                 <div className="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-lg lg:col-span-2 border border-slate-200 dark:border-slate-700">
                     <h2 className="text-xl font-semibold mb-4">Taxa Geral de Absenteísmo (Tendência Mensal)</h2>
                     <div className="h-48 flex items-end justify-between border-b border-slate-200 dark:border-slate-700 pb-4 text-sm text-slate-500 dark:text-slate-400">
-                        {['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'].map((month, _) => {
-                            const height = Math.random() * 60 + 20;
-                            const isHigh = height > 60;
+                        {['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'].map((month, index) => {
+                            const heights = [35, 42, 38, 51, 45, 39, 53, 58];
+                            const height = heights[index];
+                            const isHigh = height > 50;
                             return (
                                 <div key={month} className="flex flex-col items-center group">
                                     <div className={`w-8 rounded-t-lg relative transition-all duration-300 ${isHigh ? 'bg-red-500/80' : 'bg-emerald-500/80'}`} style={{ height: `${height}%` }}>

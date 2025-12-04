@@ -19,8 +19,8 @@ const TeamAnalytics: React.FC = () => {
 
                         <div className="h-80 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg flex items-end justify-around pb-4 px-4 overflow-hidden relative">
                             {/* Mockup Chart */}
-                            {Array.from({ length: 30 }).map((_, i) => (
-                                <div key={i} className="w-2 bg-primary/60 rounded-t-sm hover:bg-primary transition-colors" style={{ height: `${Math.random() * 80 + 10}%` }}></div>
+                            {[30, 45, 60, 20, 75, 50, 80, 40, 65, 55, 35, 70, 25, 60, 45, 85, 50, 70, 40, 65, 55, 30, 75, 45, 60, 35, 70, 50, 80, 40].map((height, i) => (
+                                <div key={i} className="w-2 bg-primary/60 rounded-t-sm hover:bg-primary transition-colors" style={{ height: `${height}%` }}></div>
                             ))}
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <span className="text-slate-400 dark:text-slate-600 text-lg font-medium opacity-20">Gráfico Interativo de Frequência</span>
@@ -40,8 +40,8 @@ const TeamAnalytics: React.FC = () => {
                                     <option>Colaborador: Adiana Bulias</option>
                                 </select>
                                 <div className="h-40 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg flex items-end justify-around pb-2 px-2 mt-4">
-                                    {Array.from({ length: 15 }).map((_, i) => (
-                                        <div key={i} className="w-2 bg-blue-500/60 rounded-t-sm" style={{ height: `${Math.random() * 60 + 20}%` }}></div>
+                                    {[40, 60, 30, 70, 50, 80, 45, 65, 55, 35, 75, 40, 60, 50, 70].map((height, i) => (
+                                        <div key={i} className="w-2 bg-blue-500/60 rounded-t-sm" style={{ height: `${height}%` }}></div>
                                     ))}
                                 </div>
                             </div>
@@ -54,8 +54,8 @@ const TeamAnalytics: React.FC = () => {
                                     <option>Colaborador: Royenio Cormaeno</option>
                                 </select>
                                 <div className="h-40 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg flex items-end justify-around pb-2 px-2 mt-4">
-                                    {Array.from({ length: 15 }).map((_, i) => (
-                                        <div key={i} className="w-2 bg-purple-500/60 rounded-t-sm" style={{ height: `${Math.random() * 60 + 20}%` }}></div>
+                                    {[50, 30, 70, 40, 80, 60, 45, 75, 35, 65, 55, 40, 70, 50, 60].map((height, i) => (
+                                        <div key={i} className="w-2 bg-purple-500/60 rounded-t-sm" style={{ height: `${height}%` }}></div>
                                     ))}
                                 </div>
                             </div>

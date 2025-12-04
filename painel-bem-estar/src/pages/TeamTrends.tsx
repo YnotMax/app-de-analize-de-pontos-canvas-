@@ -11,8 +11,8 @@ const TeamTrends: React.FC = () => {
 
                 <div className="relative bg-slate-50 dark:bg-slate-800 rounded-lg p-4 h-64 flex flex-col justify-end overflow-hidden mb-4 border border-slate-200 dark:border-slate-700">
                     <div className="absolute inset-0 flex items-end justify-around pb-2 px-4 pointer-events-none">
-                        {Array.from({ length: 24 }).map((_, i) => (
-                            <div key={i} className="w-2 bg-primary/70 rounded-t-sm shadow-sm opacity-50" style={{ height: `${Math.random() * 60 + 20}%` }}></div>
+                        {[45, 60, 30, 70, 50, 80, 40, 65, 55, 75, 35, 60, 45, 70, 50, 80, 40, 65, 55, 75, 35, 60, 45, 70].map((height, i) => (
+                            <div key={i} className="w-2 bg-primary/70 rounded-t-sm shadow-sm opacity-50" style={{ height: `${height}%` }}></div>
                         ))}
                     </div>
 

@@ -33,7 +33,7 @@ const ThemeSwitcher: React.FC = () => {
                             <button
                                 key={t.id}
                                 onClick={() => {
-                                    setTheme(t.id as any);
+                                    setTheme(t.id as 'default' | 'nature' | 'executive' | 'warm');
                                     setIsOpen(false);
                                 }}
                                 className={clsx(

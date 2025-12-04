@@ -12,9 +12,15 @@ const ManagerQuickView: React.FC = () => {
                 <div className="flex items-end justify-between gap-1 h-48">
                     {days.map((day) => {
                         const isWeekend = (day % 7 === 6) || (day % 7 === 0);
-                        const heightPresent = isWeekend ? 0 : Math.random() * 80 + 10;
-                        const heightAbsent = isWeekend ? 0 : Math.random() * 20;
-                        const heightVacation = isWeekend ? 0 : Math.random() * 10;
+                        // Deterministic pseudo-random based on day
+                        const pseudoRandom = (seed: number) => {
+                            const x = Math.sin(seed) * 10000;
+                            return x - Math.floor(x);
+                        };
+
+                        const heightPresent = isWeekend ? 0 : (pseudoRandom(day) * 60 + 30);
+                        const heightAbsent = isWeekend ? 0 : (pseudoRandom(day + 100) * 15);
+                        const heightVacation = isWeekend ? 0 : (pseudoRandom(day + 200) * 5);
 
                         return (
                             <div key={day} className="flex-1 h-full flex flex-col justify-end items-center group relative" title={`Dia ${day}`}>
@@ -64,9 +70,11 @@ const ManagerQuickView: React.FC = () => {
                 <div className="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 border border-slate-200 dark:border-slate-800">
                     <h2 className="text-xl font-semibold mb-4">Previsões de Ausência (Próximos 7 dias)</h2>
                     <div className="flex items-end justify-between gap-2 h-32 mb-4">
-                        {['Qui', 'Sex', 'Sáb', 'Dom', 'Seg', 'Ter', 'Qua'].map((day, _) => {
+                        {['Qui', 'Sex', 'Sáb', 'Dom', 'Seg', 'Ter', 'Qua'].map((day, index) => {
                             const isWeekend = day === 'Sáb' || day === 'Dom';
-                            const risk = isWeekend ? 0 : Math.random() * 30;
+                            // Deterministic risk based on index
+                            const risks = [15, 20, 0, 0, 10, 12, 25];
+                            const risk = risks[index];
                             const isHighRisk = risk > 20;
 
                             return (

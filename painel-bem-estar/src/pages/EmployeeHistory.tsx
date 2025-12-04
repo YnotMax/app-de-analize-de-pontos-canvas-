@@ -67,14 +67,13 @@ const EmployeeHistory: React.FC = () => {
                             <div className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-red-700"></span> Ausência Crítica</div>
                         </div>
                         <div className="bg-slate-50 dark:bg-slate-800 h-96 flex items-end justify-around rounded-lg border border-slate-200 dark:border-slate-700 p-4">
-                            {Array.from({ length: 30 }).map((_, i) => {
-                                const status = Math.random();
+                            {[30, 45, 60, 20, 75, 50, 80, 40, 65, 55, 35, 70, 25, 60, 45, 85, 50, 70, 40, 65, 55, 30, 75, 45, 60, 35, 70, 50, 80, 40].map((height, i) => {
                                 let color = 'bg-green-500';
-                                if (status > 0.9) color = 'bg-red-500';
-                                else if (status > 0.8) color = 'bg-yellow-400';
+                                if (i % 10 === 0) color = 'bg-red-500';
+                                else if (i % 7 === 0) color = 'bg-yellow-400';
 
                                 return (
-                                    <div key={i} className={`w-2 rounded-t-sm ${color} opacity-80 hover:opacity-100 transition-opacity`} style={{ height: `${Math.random() * 60 + 20}%` }}></div>
+                                    <div key={i} className={`w-2 rounded-t-sm ${color} opacity-80 hover:opacity-100 transition-opacity`} style={{ height: `${height}%` }}></div>
                                 )
                             })}
                         </div>

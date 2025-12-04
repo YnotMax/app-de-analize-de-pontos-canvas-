@@ -45,21 +45,27 @@ const DepartmentAnalysis: React.FC = () => {
                         <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-4 flex items-center">
                             {dept}
                             <span className={`text-sm ml-2 ${index % 2 === 0 ? 'text-red-500' : 'text-green-500'}`}>
-                                {index % 2 === 0 ? '▲' : '▼'} {Math.floor(Math.random() * 20)}%
+                                {index % 2 === 0 ? '▲' : '▼'} {(index * 5) + 2}%
                             </span>
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-8">
-                            {['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'].map((month) => (
-                                <div key={month} className="flex items-center text-sm text-slate-600 dark:text-slate-400">
-                                    <span className="w-16 flex-shrink-0">{month} '23</span>
-                                    <div className="flex-1 h-4 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex">
-                                        <div className="bg-red-500" style={{ width: `${Math.random() * 30}%` }}></div>
-                                        <div className="bg-orange-500" style={{ width: `${Math.random() * 10}%` }}></div>
-                                        <div className="bg-yellow-400" style={{ width: `${Math.random() * 10}%` }}></div>
+                            {['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'].map((month, mIndex) => {
+                                const val1 = ((index + mIndex) * 7) % 30;
+                                const val2 = ((index + mIndex) * 3) % 10;
+                                const val3 = ((index + mIndex) * 2) % 10;
+                                const total = (val1 + val2 + val3) / 10;
+                                return (
+                                    <div key={month} className="flex items-center text-sm text-slate-600 dark:text-slate-400">
+                                        <span className="w-16 flex-shrink-0">{month} '23</span>
+                                        <div className="flex-1 h-4 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex">
+                                            <div className="bg-red-500" style={{ width: `${val1}%` }}></div>
+                                            <div className="bg-orange-500" style={{ width: `${val2}%` }}></div>
+                                            <div className="bg-yellow-400" style={{ width: `${val3}%` }}></div>
+                                        </div>
+                                        <span className="ml-2 w-10 text-right">{total.toFixed(1)}%</span>
                                     </div>
-                                    <span className="ml-2 w-10 text-right">{(Math.random() * 5).toFixed(1)}%</span>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 ))}
