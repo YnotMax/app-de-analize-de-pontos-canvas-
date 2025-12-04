@@ -2,8 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 
-import ThemeSwitcher from './ThemeSwitcher';
-
 const Sidebar: React.FC = () => {
     const navItems = [
         { path: '/', icon: 'home', label: 'Home' },
@@ -57,7 +55,6 @@ const Sidebar: React.FC = () => {
             </div>
 
             <div className="flex flex-col items-center space-y-6 mt-4">
-                <ThemeSwitcher />
                 <button className="p-2 rounded-lg hover:bg-slate-700/50 text-slate-400 hover:text-slate-200">
                     <span className="material-symbols-outlined text-2xl">settings</span>
                 </button>
